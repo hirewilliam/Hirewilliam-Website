@@ -159,7 +159,6 @@ function Sidebar({ active, onNav, onClose }) {
   const channels = [
     { id: "founders", label: "for-founders", lock: true },
     { id: "chat", label: "talk-to-william", dot: true },
-    { id: "outreach", label: "activity-log", badge: "3" },
     { id: "meetings", label: "meetings", badge: "2" },
     { id: "pipeline", label: "results" },
     { id: "analytics", label: "analytics" },
@@ -2286,7 +2285,6 @@ function RightPanel({ isMobile = false }) {
 function MobileBottomNav({ active, onNav }) {
   const navItems = [
     { id: "chat",      label: "William",   Icon: IconChat,     badge: null },
-    { id: "outreach",  label: "Activity",  Icon: IconMail,     badge: "3" },
     { id: "meetings",  label: "Meetings",  Icon: IconCalendar, badge: "2" },
     { id: "pipeline",  label: "Results",   Icon: IconPipeline, badge: null },
     { id: "analytics", label: "Analytics", Icon: IconChart,    badge: null },
@@ -2390,7 +2388,6 @@ export default function App() {
   const views = {
     chat: <ChatView />,
     pipeline: <PipelineView />,
-    outreach: <OutreachView />,
     meetings: <MeetingsView />,
     analytics: <AnalyticsView />,
     founders: <ForFoundersView onNav={setPage} />,
@@ -2415,7 +2412,7 @@ export default function App() {
             <div>
               <span style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>HireWilliam</span>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.2 }}>
-                {{ chat: "talk-to-william", pipeline: "results", outreach: "activity-log", meetings: "meetings", analytics: "analytics", founders: "for-founders" }[page]}
+                {{ chat: "talk-to-william", pipeline: "results", meetings: "meetings", analytics: "analytics", founders: "for-founders" }[page]}
               </div>
             </div>
           </div>
