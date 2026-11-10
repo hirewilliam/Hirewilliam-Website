@@ -94,6 +94,9 @@ function IconCalendar({ s = 20 }) {
 function IconPipeline({ s = 20 }) {
   return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="7" width="5" height="14" rx="1"/><rect x="17" y="11" width="5" height="10" rx="1"/></svg>;
 }
+function IconUsers({ s = 20 }) {
+  return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>;
+}
 function IconChart({ s = 20 }) {
   return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>;
 }
@@ -158,6 +161,7 @@ function Sidebar({ active, onNav, onClose }) {
   const isMobile = useIsMobile();
   const channels = [
     { id: "founders", label: "for-founders", lock: true },
+    { id: "recruitment", label: "recruitment" },
     { id: "chat", label: "talk-to-william", dot: true },
     { id: "meetings", label: "meetings", badge: "2" },
     { id: "pipeline", label: "results" },
@@ -1994,6 +1998,24 @@ function AnalyticsView() {
 }
 
 // ── For Founders View ──
+// ── Recruitment ──
+function RecruitmentView() {
+  return (
+    <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
+      <div style={{ padding: "14px 16px", borderBottom: `1px solid ${RULE}`, display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+        <IconHash s={14} />
+        <span style={{ fontWeight: 600, fontSize: 15 }}>recruitment</span>
+      </div>
+      <div style={{ flex: 1, overflowY: "auto", WebkitOverflowScrolling: "touch", padding: "24px 16px" }}>
+        <div style={{ maxWidth: 720 }}>
+          <div style={{ fontSize: 22, fontWeight: 700, color: INK, marginBottom: 8 }}>Recruitment</div>
+          <div style={{ fontSize: 14, color: INK_SOFT, lineHeight: 1.6 }}>Content coming soon.</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ForFoundersView({ onNav }) {
   return (
     <div className="ff-root" style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch", background: "#ffffff" }}>
@@ -2289,6 +2311,7 @@ function MobileBottomNav({ active, onNav }) {
     { id: "pipeline",  label: "Results",   Icon: IconPipeline, badge: null },
     { id: "analytics", label: "Analytics", Icon: IconChart,    badge: null },
     { id: "founders",  label: "Founders",  Icon: IconLock,     badge: null },
+    { id: "recruitment", label: "Recruitment", Icon: IconUsers, badge: null },
   ];
 
   return (
@@ -2391,6 +2414,7 @@ export default function App() {
     meetings: <MeetingsView />,
     analytics: <AnalyticsView />,
     founders: <ForFoundersView onNav={setPage} />,
+    recruitment: <RecruitmentView />,
   };
 
   return (
@@ -2412,7 +2436,7 @@ export default function App() {
             <div>
               <span style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>HireWilliam</span>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.2 }}>
-                {{ chat: "talk-to-william", pipeline: "results", meetings: "meetings", analytics: "analytics", founders: "for-founders" }[page]}
+                {{ chat: "talk-to-william", pipeline: "results", meetings: "meetings", analytics: "analytics", founders: "for-founders", recruitment: "recruitment" }[page]}
               </div>
             </div>
           </div>
