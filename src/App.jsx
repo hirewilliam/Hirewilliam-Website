@@ -1999,27 +1999,250 @@ function AnalyticsView() {
 
 // ── For Founders View ──
 // ── Recruitment ──
-function RecruitmentView() {
+const RR_CSS = `
+        .ff-root .rr-lead { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
+        .ff-root .rr-p { margin: 0 0 10px; }
+        .ff-root .rr-p:last-child { margin-bottom: 0; }
+        .ff-root .rr-stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .ff-root .rr-stat { flex: 1; min-width: 140px; border: 1px solid #dddddd; border-radius: 4px; padding: 10px 14px; background: #fff; }
+        .ff-root .rr-stat b { display: block; font-size: 18px; font-weight: 900; color: #1d1c1d; }
+        .ff-root .rr-stat span { font-size: 12px; color: #616061; }
+        .ff-root .rr-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .ff-root .rr-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 16px; border-radius: 4px; font-family: inherit; font-size: 14px; font-weight: 700; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: background .12s; }
+        .ff-root .rr-btn-primary { background: #3f0e40; color: #ffffff; }
+        .ff-root .rr-btn-primary:hover { background: #611f69; color: #ffffff; text-decoration: none; }
+        .ff-root .rr-btn-ghost { background: #ffffff; color: #1d1c1d; border-color: #dddddd; }
+        .ff-root .rr-btn-ghost:hover { background: #f2f2f2; text-decoration: none; }
+        .ff-root .rr-price { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; max-width: 720px; }
+        .ff-root .rr-plan { border: 1px solid #dddddd; border-radius: 4px; padding: 14px 16px; background: #fff; }
+        .ff-root .rr-plan-hi { border-color: #3f0e40; box-shadow: 0 0 0 1px #3f0e40 inset; }
+        .ff-root .rr-plan h3 { margin: 0; font-size: 15px; font-weight: 900; color: #1d1c1d; }
+        .ff-root .rr-amt { font-size: 26px; font-weight: 900; letter-spacing: -.02em; color: #1d1c1d; margin: 6px 0 0; }
+        .ff-root .rr-amt small { font-size: 13px; font-weight: 400; color: #616061; letter-spacing: 0; }
+        .ff-root .rr-hrs { font-size: 13px; color: #616061; }
+        .ff-root .rr-plan ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+        .ff-root .rr-plan li { font-size: 13px; color: #616061; display: flex; gap: 8px; line-height: 1.45; }
+        .ff-root .rr-plan li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #3f0e40; flex: none; margin-top: 7px; }
+        .ff-root .rr-note { border: 1px solid #dddddd; border-radius: 4px; padding: 12px 14px; margin-top: 10px; max-width: 720px; font-size: 13px; line-height: 1.5; color: #616061; display: flex; gap: 10px; }
+        .ff-root .rr-note span:first-child { font-size: 18px; flex: none; }
+        @media (max-width: 560px) { .ff-root .rr-price { grid-template-columns: 1fr; } }
+`;
+
+function RecruitmentView({ onNav }) {
+  const scrollToPricing = () => {
+    const el = document.getElementById("rr-pricing");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const RequestBtn = () => <a href="mailto:info@hirewilliam.com" className="rr-btn rr-btn-primary">Request an engineer</a>;
+
   return (
-    <div style={{ flex: 1, minHeight: 0, display: "flex", flexDirection: "column" }}>
-      <div style={{ padding: "14px 16px", borderBottom: `1px solid ${RULE}`, display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
-        <IconHash s={14} />
-        <span style={{ fontWeight: 600, fontSize: 15 }}>recruitment</span>
-      </div>
-      <div style={{ flex: 1, overflowY: "auto", WebkitOverflowScrolling: "touch", padding: "24px 16px" }}>
-        <div style={{ maxWidth: 720 }}>
-          <div style={{ fontSize: 22, fontWeight: 700, color: INK, marginBottom: 8 }}>Recruitment</div>
-          <div style={{ fontSize: 14, color: INK_SOFT, lineHeight: 1.6 }}>Content coming soon.</div>
+    <div className="ff-root" style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch", background: "#ffffff" }}>
+      <style>{FF_CSS}</style>
+      <style>{RR_CSS}</style>
+
+      <main className="ff-main">
+        <div className="ff-chanbar">
+          <span className="ff-chan-hash">#</span>
+          <span className="ff-chan-name">recruitment</span>
+          <span className="ff-chan-sep" />
+          <span className="ff-chan-desc">AI-fluent engineers, on your team in days</span>
+          <span className="ff-ai-pill">AI</span>
         </div>
-      </div>
+
+        <div className="ff-msgs">
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:00 AM</span></div>
+              <div className="ff-body">
+                <div className="rr-lead">Need an engineer? Say so. That’s the whole brief.</div>
+                <p className="rr-p">We place AI-fluent, certified engineers inside your team. Month to month, no long contracts. <strong>From “we need someone” to an engineer in your Slack in 3 to 5 business days.</strong></p>
+                <p className="rr-p">No budget spreadsheet, no 40-page plan. We study your company, your competitors and your ambition, write a 30-day blueprint, and assign the engineer who fits it.</p>
+                <div className="rr-stats">
+                  <div className="rr-stat"><b>3–5 days</b><span>request to start, business days</span></div>
+                  <div className="rr-stat"><b>From $1,500</b><span>per month, 20 hrs a week</span></div>
+                  <div className="rr-stat"><b>Month to month</b><span>cancel any time</span></div>
+                </div>
+                <div className="rr-cta">
+                  <RequestBtn />
+                  <button type="button" onClick={scrollToPricing} className="rr-btn rr-btn-ghost">See pricing</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-ddiv"><div className="ff-dline" /><div className="ff-dtxt">how it works</div><div className="ff-dline" /></div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:01 AM</span></div>
+              <div className="ff-body">
+                Four steps, five business days, one engineer.
+                <div className="ff-pflow">
+                  <div className="ff-pstep">
+                    <div className="ff-psl"><div className="ff-psn">1</div><div className="ff-psl-line" /></div>
+                    <div className="ff-psc">
+                      <div className="ff-pst">Tell us you need an engineer</div>
+                      <div className="ff-psd">One message in #talk-to-william. You don’t need a job description, a budget line or a project plan. We take it from here.</div>
+                    </div>
+                  </div>
+                  <div className="ff-pstep">
+                    <div className="ff-psl"><div className="ff-psn">2</div><div className="ff-psl-line" /></div>
+                    <div className="ff-psc">
+                      <div className="ff-pst">We study your business</div>
+                      <div className="ff-psd">Your product, your stack, your competitors, the problems slowing you down and where you want to be in a year. Day 1 to 2.</div>
+                    </div>
+                  </div>
+                  <div className="ff-pstep">
+                    <div className="ff-psl"><div className="ff-psn">3</div><div className="ff-psl-line" /></div>
+                    <div className="ff-psc">
+                      <div className="ff-pst">You get a 30-day blueprint</div>
+                      <div className="ff-psd">What the engineer will build in their first month, in what order, and what it unlocks. You approve it before anyone starts. Day 3.</div>
+                    </div>
+                  </div>
+                  <div className="ff-pstep">
+                    <div className="ff-psl"><div className="ff-psn">4</div><div className="ff-psl-line" /></div>
+                    <div className="ff-psc">
+                      <div className="ff-pst">Your engineer joins the team</div>
+                      <div className="ff-psd">Matched to the blueprint, not pulled from a bench. They join your Slack, your repo and your standups. Day 4 to 5.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-ddiv"><div className="ff-dline" /><div className="ff-dtxt">why these engineers</div><div className="ff-dline" /></div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:02 AM</span></div>
+              <div className="ff-body">
+                Most agencies review CVs. We review what people have actually shipped.
+                <div className="ff-grid3">
+                  <div className="ff-card">
+                    <div className="ff-card-top"><span className="ff-cico">🛡️</span><span className="ff-ctag ff-tp">CERTIFIED</span></div>
+                    <div className="ff-ctitle">AI-fluent and certified</div>
+                    <div className="ff-cbody">Every engineer holds current certification and works with AI tooling daily: agents, automations, integrations, modern model APIs. Not “learning it on your dime.”</div>
+                  </div>
+                  <div className="ff-card">
+                    <div className="ff-card-top"><span className="ff-cico">📈</span><span className="ff-ctag ff-tb">VETTED ON RESULTS</span></div>
+                    <div className="ff-ctitle">Judged by outcomes</div>
+                    <div className="ff-cbody">We look at what their past work produced: systems in production, time saved, revenue moved. A good interview doesn’t get anyone onto our roster. Shipped work does.</div>
+                  </div>
+                  <div className="ff-card">
+                    <div className="ff-card-top"><span className="ff-cico">👥</span><span className="ff-ctag ff-tg">EMBEDDED</span></div>
+                    <div className="ff-ctitle">Part of your team, not a vendor</div>
+                    <div className="ff-cbody">Your Slack, your standups, your codebase. One engineer, consistently, for as long as you keep them. No account manager in between.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-ddiv" id="rr-pricing"><div className="ff-dline" /><div className="ff-dtxt">pricing</div><div className="ff-dline" /></div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:03 AM</span></div>
+              <div className="ff-body">
+                Two options. Both month to month, both include the blueprint and quarterly reviews.
+                <div className="rr-price">
+                  <div className="rr-plan">
+                    <h3>Part-time</h3>
+                    <div className="rr-amt">$1,500 <small>/ month</small></div>
+                    <div className="rr-hrs">20 hours a week</div>
+                    <ul>
+                      <li>One dedicated AI-fluent engineer</li>
+                      <li>30-day blueprint before they start</li>
+                      <li>Free quarterly review and roadmap</li>
+                      <li>Cancel or switch any month</li>
+                    </ul>
+                  </div>
+                  <div className="rr-plan rr-plan-hi">
+                    <h3>Full-time</h3>
+                    <div className="rr-amt">$2,800 <small>/ month</small></div>
+                    <div className="rr-hrs">40 hours a week</div>
+                    <ul>
+                      <li>One dedicated AI-fluent engineer</li>
+                      <li>30-day blueprint before they start</li>
+                      <li>Free quarterly review and roadmap</li>
+                      <li>Cancel or switch any month</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="rr-note">
+                  <span>💜</span>
+                  <div><strong>One-time registration fee: $300, non-refundable.</strong> It doesn’t go to us. Every registration fee is donated in full to the i will. i am. programme, which funds education for women who are survivors of gender-based violence.</div>
+                </div>
+                <div className="rr-cta"><RequestBtn /></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-ddiv"><div className="ff-dline" /><div className="ff-dtxt">after you hire</div><div className="ff-dline" /></div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:04 AM</span></div>
+              <div className="ff-body">
+                Every quarter, free, for as long as you’re with us: we sit down with you, review what your engineer has shipped against the blueprint, and roadmap the next 90 days. If the business has changed, the plan changes with it. If you need a second engineer, or a different one, that’s the conversation to have.
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-ddiv"><div className="ff-dline" /><div className="ff-dtxt">questions founders ask</div><div className="ff-dline" /></div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:05 AM</span></div>
+              <div className="ff-body">
+                <p className="rr-p"><strong>Is this an employee or a contractor?</strong> A freelance engineer on a month-to-month arrangement through HireWilliam. No employment admin on your side.</p>
+                <p className="rr-p"><strong>What if it isn’t working?</strong> Tell us. We reassign. You’re never locked in past the current month.</p>
+                <p className="rr-p"><strong>Can I pick the engineer?</strong> We match to the blueprint and introduce them before day one. If it’s not the right fit, we go again before they start.</p>
+                <p className="rr-p"><strong>What kind of work do they do?</strong> Agents, automations, integrations, internal tools, data pipelines, AI features in your product. The blueprint spells out exactly what, for your business.</p>
+                <p className="rr-p"><strong>Do I need to know what I want built?</strong> No. “We need an engineer” is enough. The research and the blueprint are how we figure out the rest with you.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="ff-mg">
+            <div className="ff-av">W</div>
+            <div className="ff-msg-right">
+              <div className="ff-meta"><span className="ff-sender">William</span><span className="ff-ai-pill">AI</span><span className="ff-ts">9:06 AM</span></div>
+              <div className="ff-body">
+                <div className="rr-lead">Need an engineer this month?</div>
+                <div className="rr-cta">
+                  <RequestBtn />
+                  <button type="button" onClick={() => onNav && onNav("chat")} className="rr-btn rr-btn-ghost">Ask a question first</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="ff-izone">
+          <div className="ff-ibar">
+            <div className="ff-itext">Message #recruitment</div>
+            <div className="ff-ial">
+              <a href="mailto:info@hirewilliam.com" className="ff-ilink">✉ Email Us</a>
+              <a href="https://hirewilliam.com" className="ff-ilink">↗ hirewilliam.com</a>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
 
-function ForFoundersView({ onNav }) {
-  return (
-    <div className="ff-root" style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch", background: "#ffffff" }}>
-      <style>{`
+// Shared channel-page styles (used by ForFoundersView and RecruitmentView)
+const FF_CSS = `
         .ff-root { font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.46668; color: #1d1c1d; }
         .ff-root .ff-main { background: #ffffff; display: flex; flex-direction: column; }
         .ff-root .ff-chanbar { height: 49px; padding: 0 20px; background: #ffffff; border-bottom: 1px solid #dddddd; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
@@ -2084,7 +2307,12 @@ function ForFoundersView({ onNav }) {
         .ff-root .ff-ilink:hover { color: #3f0e40; text-decoration: underline; }
         @media (max-width: 720px) { .ff-root .ff-grid3 { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 480px) { .ff-root .ff-grid3 { grid-template-columns: 1fr; } }
-      `}</style>
+`;
+
+function ForFoundersView({ onNav }) {
+  return (
+    <div className="ff-root" style={{ flex: 1, minHeight: 0, overflowY: "auto", WebkitOverflowScrolling: "touch", background: "#ffffff" }}>
+      <style>{FF_CSS}</style>
 
       <main className="ff-main">
         <div className="ff-chanbar">
@@ -2414,7 +2642,7 @@ export default function App() {
     meetings: <MeetingsView />,
     analytics: <AnalyticsView />,
     founders: <ForFoundersView onNav={setPage} />,
-    recruitment: <RecruitmentView />,
+    recruitment: <RecruitmentView onNav={setPage} />,
   };
 
   return (
