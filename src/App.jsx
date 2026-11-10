@@ -162,7 +162,6 @@ function Sidebar({ active, onNav, onClose }) {
   const channels = [
     { id: "founders", label: "for-founders", lock: true },
     { id: "recruitment", label: "recruitment" },
-    { id: "chat", label: "talk-to-william", dot: true },
     { id: "meetings", label: "meetings", badge: "2" },
     { id: "pipeline", label: "results" },
     { id: "analytics", label: "analytics" },
