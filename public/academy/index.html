@@ -946,23 +946,10 @@ footer a{color:var(--violet-soft);text-decoration:none;}
   box-shadow:0 1px 2px rgba(0,0,0,.1);
 }
 .wk-tag:nth-child(even){transform:rotate(.6deg);}
-.wk-form{max-width:620px;}
-.wk-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;}
-.wk-span2{grid-column:span 2;}
-.wk-field label{
-  display:block;font-family:'Caveat',cursive;font-size:18px;font-weight:700;
-  color:var(--wk-red);line-height:1.2;margin-bottom:0;
-}
-.wk-field input,.wk-field select{
-  width:100%;background:transparent;border:none;
-  border-bottom:2px solid rgba(28,43,107,.4);
-  font-family:'Kalam',cursive;font-size:18px;color:var(--wk-ink);
-  padding:2px 2px 4px;border-radius:0;
-}
-.wk-field input::placeholder{color:rgba(107,100,88,.55);}
-.wk-field input:focus,.wk-field select:focus{outline:none;border-bottom-color:var(--wk-red);}
-.wk-field select{cursor:pointer;}
-.wk-field select option{font-family:Arial,sans-serif;color:#1C2B6B;}
+.wk-apply{max-width:620px;}
+.wk-apply-lead{font-family:'Kalam',cursive;font-size:20px;color:var(--wk-ink);line-height:1.5;margin:0 0 6px;}
+.wk-apply-lead a{color:var(--wk-red);font-weight:700;text-decoration:underline;text-underline-offset:3px;word-break:break-all;}
+a.wk-btn{text-decoration:none;display:inline-block;}
 .wk-form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px;}
 .wk-form-note{font-family:'Caveat',cursive;font-size:18px;color:var(--wk-pencil);}
 
@@ -1010,8 +997,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
   #panel-workshop *,#panel-masterclass *,#panel-oneonone *{transition:none!important;animation:none!important;}
 }
 @media (max-width:900px){
-  .wk-checklist,.wk-cards,.wk-form-grid{grid-template-columns:1fr;}
-  .wk-span2{grid-column:1;}
+  .wk-checklist,.wk-cards{grid-template-columns:1fr;}
   .wkbk{padding:22px 12px 48px 34px;}
   .wkbk-sheet{padding:30px 22px 36px 60px;}
   .wkbk-sheet{background-image:
@@ -1107,7 +1093,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
     <div class="topbar-left">
       <span class="t-hash">#</span>
       <span id="topbar-title">ai-101-workshop</span>
-      <span class="t-desc" id="topbar-desc">Free 3-Hour Workshop · Friday, August 21, 2026</span>
+      <span class="t-desc" id="topbar-desc">Free 3-Hour Workshop · Monday, January 4, 2027</span>
     </div>
     <div class="topbar-right">
       <div class="btn btn-ghost" onclick="switchChannel('workshop')">View programs</div>
@@ -1152,7 +1138,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
           <!-- HERO -->
           <div class="wk-hero">
             <div class="wk-tape-label">
-              <div class="wk-small-red">✿ free workshop · friday, august 21, 2026</div>
+              <div class="wk-small-red">✿ free workshop · monday, january 4, 2027</div>
               <h1 class="wk-h1">AI 101 Workshop</h1>
               <div class="wk-h1-sub"><mark class="wk-hl wk-hl-yellow">Simple. Clear. Free.</mark></div>
               <div class="wk-meta">3 hours · plain English · no tech skills needed · <span class="wk-circled">100% Free</span></div>
@@ -1304,7 +1290,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
             </div>
             <div class="faq-item">
               <div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> When exactly is it?</span> <span class="faq-chev">+</span></div>
-              <div class="faq-a">Friday, August 21, 2026. Your seat is held the moment you sign up - we’ll email the time and joining link.</div>
+              <div class="faq-a">Monday, January 4, 2027. Your seat is held the moment we get your email - we’ll reply with the time and joining link.</div>
             </div>
             <div class="faq-item">
               <div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> What happens after the workshop?</span> <span class="faq-chev">+</span></div>
@@ -1327,19 +1313,12 @@ footer a{color:var(--violet-soft);text-decoration:none;}
             <span class="wk-tag" style="background:var(--wk-hl-blue)">🚀 30-Min Quick Win Guide</span>
           </div>
 
-          <form class="wk-form" onsubmit="submitForm(event,'Free AI 101 Workshop')">
-            <div class="wk-form-grid">
-              <div class="wk-field"><label>First name</label><input type="text" placeholder="Ada" required/></div>
-              <div class="wk-field"><label>Last name</label><input type="text" placeholder="Lovelace" required/></div>
-              <div class="wk-field wk-span2"><label>Work email</label><input type="email" placeholder="you@company.com" required/></div>
-              <div class="wk-field"><label>Company</label><input type="text" placeholder="Your startup or business"/></div>
-              <div class="wk-field"><label>Your role</label><select><option value="">Select…</option><option>Founder / CEO</option><option>Operations</option><option>Sales / Marketing</option><option>Product</option><option>Other</option></select></div>
-            </div>
+          <div class="wk-apply">
+            <p class="wk-apply-lead">To claim your free seat, email <a href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%20Free%20AI%20101%20Workshop&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%20Free%20AI%20101%20Workshop%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">info@hirewilliam.com</a></p>
             <div class="wk-form-foot">
-              <button type="submit" class="wk-btn wk-btn-red">✍️ Claim my free seat + gifts</button>
-              <span class="wk-form-note">no spam - just your joining link and free gifts.</span>
+              <a class="wk-btn wk-btn-red" href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%20Free%20AI%20101%20Workshop&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%20Free%20AI%20101%20Workshop%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">✉️ Email us to claim my free seat</a>
             </div>
-          </form>
+          </div>
 
           <div class="wk-deeper">
             <span class="wk-deeper-arrow">↳</span>
@@ -1516,7 +1495,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
             <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> Do I need paid AI subscriptions?</span> <span class="faq-chev">+</span></div><div class="faq-a">No - free tiers are enough for the day. Just bring a laptop; we send a setup guide for the free tools beforehand.</div></div>
             <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> Is my business data safe?</span> <span class="faq-chev">+</span></div><div class="faq-a">Yes - everything you build lives in your own accounts. Nothing is shared with the group, and you can use sample data for anything sensitive.</div></div>
             <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> Can my whole team join?</span> <span class="faq-chev">+</span></div><div class="faq-a">Yes - $170 per seat. For 5+ people email info@hirewilliam.com for group pricing.</div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> When exactly is it? What if I miss part of it?</span> <span class="faq-chev">+</span></div><div class="faq-a">Friday, August 28, 2026 - your seat is held the moment you sign up. And the full 8 hours are recorded and yours to keep.</div></div>
+            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span><b class="wk-q">Q.</b> When exactly is it? What if I miss part of it?</span> <span class="faq-chev">+</span></div><div class="faq-a">Friday, August 28, 2026 - your seat is held the moment we get your email. And the full 8 hours are recorded and yours to keep.</div></div>
           </div>
 
           <!-- SIGNUP -->
@@ -1534,20 +1513,12 @@ footer a{color:var(--violet-soft);text-decoration:none;}
             <span class="wk-tag" style="background:var(--wk-hl-yellow)">🔁 Full replay</span>
           </div>
 
-          <form class="wk-form" onsubmit="submitForm(event,'8-Hour Expert Masterclass ($170)')">
-            <div class="wk-form-grid">
-              <div class="wk-field"><label>First name</label><input type="text" placeholder="Ada" required/></div>
-              <div class="wk-field"><label>Last name</label><input type="text" placeholder="Lovelace" required/></div>
-              <div class="wk-field wk-span2"><label>Work email</label><input type="email" placeholder="you@company.com" required/></div>
-              <div class="wk-field"><label>Company</label><input type="text" placeholder="Your startup or business"/></div>
-              <div class="wk-field"><label>Your role</label><select><option value="">Select…</option><option>Founder / CEO</option><option>Operations</option><option>Sales / Marketing</option><option>Product</option><option>Other</option></select></div>
-              <div class="wk-field wk-span2"><label>Team size - group pricing on 5+ seats</label><select><option value="">Select…</option><option>Just me</option><option>2–4 people</option><option>5–10 people</option><option>10+ people</option></select></div>
-            </div>
+          <div class="wk-apply">
+            <p class="wk-apply-lead">To enroll, email <a href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%208%2DHour%20Expert%20Masterclass%20%28%24170%29&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%208%2DHour%20Expert%20Masterclass%20%28%24170%29%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">info@hirewilliam.com</a></p>
             <div class="wk-form-foot">
-              <button type="submit" class="wk-btn wk-btn-grape">🔥 Enroll for $170 - secure my seat</button>
-              <span class="wk-form-note">we confirm within 24 hrs.</span>
+              <a class="wk-btn wk-btn-grape" href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%208%2DHour%20Expert%20Masterclass%20%28%24170%29&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%208%2DHour%20Expert%20Masterclass%20%28%24170%29%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">✉️ Email us to enroll for $170</a>
             </div>
-          </form>
+          </div>
 
           <div class="wk-foot">HireWilliam Academy · <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a> · <a href="https://hirewilliam.com" target="_blank" rel="noopener">hirewilliam.com</a></div>
         </div>
@@ -1714,19 +1685,12 @@ footer a{color:var(--violet-soft);text-decoration:none;}
           <h2 class="wk-h2" id="signup-oneonone">Apply for a spot 👤</h2>
           <div class="wk-margin-note" style="color:var(--wk-ink)">✏️ $1,700 · 2 spots per month - we reply within 24 hours</div>
 
-          <form class="wk-form" onsubmit="submitForm(event,'1-on-1 3-Day Intensive ($1,700)')">
-            <div class="wk-form-grid">
-              <div class="wk-field"><label>First name</label><input type="text" placeholder="Ada" required/></div>
-              <div class="wk-field"><label>Last name</label><input type="text" placeholder="Lovelace" required/></div>
-              <div class="wk-field wk-span2"><label>Work email</label><input type="email" placeholder="you@company.com" required/></div>
-              <div class="wk-field"><label>Company</label><input type="text" placeholder="Your startup or business"/></div>
-              <div class="wk-field"><label>Your role</label><select><option value="">Select…</option><option>Founder / CEO</option><option>Operations</option><option>Sales / Marketing</option><option>Product</option><option>Other</option></select></div>
-            </div>
+          <div class="wk-apply">
+            <p class="wk-apply-lead">To apply, email <a href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%201%2Don%2D1%203%2DDay%20Intensive%20%28%241%2C700%29&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%201%2Don%2D1%203%2DDay%20Intensive%20%28%241%2C700%29%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">info@hirewilliam.com</a></p>
             <div class="wk-form-foot">
-              <button type="submit" class="wk-btn wk-btn-ink">✍️ Apply - $1,700 for 3 days</button>
-              <span class="wk-form-note">no obligation - we'll set up a short call.</span>
+              <a class="wk-btn wk-btn-ink" href="mailto:info@hirewilliam.com?subject=Academy%20Application%20%2D%201%2Don%2D1%203%2DDay%20Intensive%20%28%241%2C700%29&body=Hi%20HireWilliam%20team%2C%0A%0AI%27d%20like%20to%20apply%20for%3A%201%2Don%2D1%203%2DDay%20Intensive%20%28%241%2C700%29%0A%0AName%3A%0ACompany%3A%0ARole%3A%0A%0AThanks%21">✉️ Email us to apply</a>
             </div>
-          </form>
+          </div>
 
           <div class="wk-foot">HireWilliam Academy · <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a> · <a href="https://hirewilliam.com" target="_blank" rel="noopener">hirewilliam.com</a></div>
         </div>
@@ -9836,7 +9800,7 @@ footer a{color:var(--violet-soft);text-decoration:none;}
 <script>
 /* ── CHANNEL SWITCHING ──────────────────── */
 const topbarTitles = {
-  workshop: ['ai-101-workshop','Free 3-Hour Workshop · Friday, August 21, 2026'],
+  workshop: ['ai-101-workshop','Free 3-Hour Workshop · Monday, January 4, 2027'],
   masterclass: ['expert-masterclass','8-Hour Expert Masterclass · $170 · Friday, August 28, 2026'],
   'playbook-solo': ['solo-entrepreneurs','Playbook for Solo Entrepreneurs'],
   'playbook-startup': ['startup-founders','Playbook for Startup Founders'],
@@ -9908,18 +9872,6 @@ function toggleFaq(el) {
   if (!open) item.classList.add('open');
 }
 
-/* ── FORM SUBMIT ─────────────────────────── */
-function submitForm(e, label) {
-  e.preventDefault();
-  const lines = [];
-  e.target.querySelectorAll('.wk-field').forEach(f => {
-    const l = f.querySelector('label'), inp = f.querySelector('input,select');
-    if (l && inp && inp.value) lines.push(l.textContent.trim() + ': ' + inp.value);
-  });
-  const sub = encodeURIComponent(`Academy Signup - ${label}`);
-  const body = encodeURIComponent(`Hi HireWilliam team,\n\nI'd like to sign up for: ${label}\n\n` + lines.join('\n') + `\n\nPlease confirm my seat. Thanks!`);
-  window.location.href = `mailto:info@hirewilliam.com?subject=${sub}&body=${body}`;
-}
 </script>
 </body>
 </html>
