@@ -91,6 +91,8 @@
   .nav ul { display: flex; align-items: center; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
   .nav li a { text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
   .nav li a:hover { border-color: var(--gold); }
+  .nav li a.site-logo { width: 32px; height: 32px; border-radius: 8px; background: #5a3fa0; color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-weight: 700; font-size: 15px; letter-spacing: 0; padding: 0; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 2px 10px rgba(10, 2, 20, 0.4); transition: transform 0.2s, box-shadow 0.2s; }
+  .nav li a.site-logo:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(10, 2, 20, 0.55), 0 0 0 1px var(--gold); }
   .hero-body { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1rem var(--gutter) clamp(4rem, 8vw, 6.5rem); }
   h1 { font-size: clamp(3rem, 8.6vw, 8.25rem); line-height: 0.98; font-weight: 300; text-shadow: 0 2px 30px rgba(29, 11, 51, 0.7); }
   h1 span { display: block; }
@@ -134,10 +136,6 @@
   .empty { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; padding: 1rem; color: var(--ink); font-family: var(--display); font-style: italic; line-height: 1.2; }
   .empty b { font-weight: 400; font-size: clamp(1.1rem, 2.2vw, 1.6rem); display: block; }
   .empty small { font-family: var(--sans); font-style: normal; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; }
-  .plate { margin-top: 1.5rem; text-align: center; }
-  .plate .title { font-family: var(--display); font-style: italic; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.15; }
-  .plate .meta { color: var(--mist); font-size: 0.95rem; }
-  .plate .price { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1; margin: 0.8rem 0 0; display: inline-block; }
 
   /* ---------- II. The prints: a quiet row, evenly hung ---------- */
   .prints { --bg: var(--wall); }
@@ -174,8 +172,8 @@
     .row { grid-template-columns: repeat(3, 1fr); row-gap: 3rem; }
   }
   @media (max-width: 760px) {
-    .nav ul { gap: 1.25rem; }
-    .nav li:nth-child(-n+2) { display: none; }
+    .nav ul { gap: 1rem; }
+    .nav li:first-child { display: none; }
     h1 .l2 { padding-left: 0.4em; }
     .cause .top { grid-template-columns: 1fr; }
     .covers ul { grid-template-columns: 1fr 1fr; }
@@ -231,10 +229,10 @@
   <nav class="nav" aria-label="Main">
     <a class="wordmark" href="#top">will.i.am</a>
     <ul>
-      <li><a class="engraved" href="https://hirewilliam.com">HireWilliam</a></li>
       <li><a class="engraved" href="#cause">The cause</a></li>
       <li><a class="engraved" href="#originals">Originals</a></li>
       <li><a class="engraved" href="#prints">Prints</a></li>
+      <li><a class="site-logo" href="https://hirewilliam.com" title="Back to hirewilliam.com" aria-label="Back to hirewilliam.com">W</a></li>
     </ul>
   </nav>
 
@@ -300,12 +298,6 @@
           <div class="frame"><div class="mat"><div class="slot">
             <img src="painting-1.jpg" alt="A dancer in a feathered skirt and cuffs, painted in black on a yellow and green ground, arms raised mid-step">
           </div></div></div>
-          <figcaption class="plate">
-            <div class="title">Title of the piece</div>
-            <div class="meta">Artist name, country</div>
-            <div class="meta">Medium, size</div>
-            <div class="price gold-text">$8,000</div>
-          </figcaption>
         </figure>
 
         <!-- ORIGINAL II: load it the same way -->
@@ -313,12 +305,6 @@
           <div class="frame"><div class="mat"><div class="slot">
             <img src="painting-2.jpg" alt="A dancer in a blue top and feathered skirt holding a rattle, painted in black on a red, orange and green ground">
           </div></div></div>
-          <figcaption class="plate">
-            <div class="title">Title of the piece</div>
-            <div class="meta">Artist name, country</div>
-            <div class="meta">Medium, size</div>
-            <div class="price gold-text">$8,000</div>
-          </figcaption>
         </figure>
       </div>
       <p class="to-buy">To buy an original, email <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a></p>
