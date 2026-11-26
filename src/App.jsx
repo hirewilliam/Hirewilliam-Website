@@ -2636,11 +2636,36 @@ function MobileBottomNav({ active, onNav }) {
   );
 }
 
+// ── URL routing ──
+// Pages that have their own URL. Everything else lives at "/".
+const PAGE_PATHS = { recruitment: "/recruitment" };
+const PAGE_TITLES = { recruitment: "AI Recruitment - Hire an AI Engineer | HireWilliam" };
+const DEFAULT_TITLE = typeof document !== "undefined" ? document.title : "HireWilliam";
+const trimSlash = (p) => p.replace(/\/+$/, "") || "/";
+function pageFromPath(pathname) {
+  const path = trimSlash(pathname);
+  const match = Object.entries(PAGE_PATHS).find(([, route]) => route === path);
+  return match ? match[0] : "founders";
+}
+
 // ── Main App ──
 export default function App() {
-  const [page, setPage] = useState("founders");
+  const [page, setPageState] = useState(() => pageFromPath(window.location.pathname));
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const isMobile = useIsMobile();
+
+  // Keep the address bar in step with the page so each routed page is linkable
+  const setPage = (p) => {
+    setPageState(p);
+    const route = PAGE_PATHS[p] || "/";
+    if (trimSlash(window.location.pathname) !== route) window.history.pushState({ page: p }, "", route);
+  };
+  useEffect(() => {
+    const onPop = () => setPageState(pageFromPath(window.location.pathname));
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+  useEffect(() => { document.title = PAGE_TITLES[page] || DEFAULT_TITLE; }, [page]);
 
   const views = {
     chat: <ChatView />,
