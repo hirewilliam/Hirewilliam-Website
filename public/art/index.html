@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>will.i.am | Where there’s a will, there’s a way</title>
+<meta name="description" content="African art and AI art prints, sold to fund AI training and job placement for survivors of gender-based violence in Africa.">
+<link rel="canonical" href="https://hirewilliam.com/art/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="will.i.am | Where there’s a will, there’s a way">
+<meta property="og:description" content="African art and AI art prints, sold to fund AI training and job placement for survivors of gender-based violence in Africa.">
+<meta property="og:url" content="https://hirewilliam.com/art/">
+<meta property="og:image" content="https://hirewilliam.com/art/painting-1.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    /* Gallery walls */
+    --wall: #3A1863;
+    --wall-deep: #2C1050;
+    --wall-lit: #4A2280;
+    /* Materials */
+    --gold: #D9B76A;
+    --gold-pale: #F3E3B3;
+    --gold-deep: #9C7526;
+    --gilt: linear-gradient(135deg, #F6E7B4 0%, #C9A24D 30%, #F0D58C 52%, #8F6A1E 78%, #E2C277 100%);
+    --ivory: #F6F0E4;
+    --mist: #D8CBEA;
+    --ink: #1D0B33;
+
+    --display: "Cormorant Garamond", "Cormorant", Garamond, "Times New Roman", serif;
+    --sans: "Jost", "Avenir Next", "Century Gothic", sans-serif;
+    --gutter: clamp(1.25rem, 6vw, 6rem);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --wall: #321457; --wall-deep: #260D46; --wall-lit: #40206E; }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; overflow-x: hidden; overflow-x: clip; }
+  body {
+    margin: 0; background: var(--wall-deep); color: var(--ivory);
+    font-family: var(--sans); font-weight: 300; font-size: 1.0625rem; line-height: 1.7;
+    overflow-x: hidden; overflow-x: clip; -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, p, figure { margin: 0; }
+  h1, h2 { font-family: var(--display); font-weight: 400; font-style: italic; line-height: 1; letter-spacing: -0.01em; }
+  h2 { font-size: clamp(2.75rem, 6vw, 5rem); }
+  a { color: inherit; }
+  svg { display: block; }
+  :focus-visible { outline: 1px solid var(--gold-pale); outline-offset: 5px; }
+  .defs { position: absolute; width: 0; height: 0; }
+
+  /* Small engraved lettering: navigation, buttons, plates */
+  .engraved { font-family: var(--sans); font-weight: 400; font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; }
+  .gold-text { background: var(--gilt); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .coat { position: relative; background-color: var(--bg); padding: clamp(3.5rem, 7vw, 6.5rem) var(--gutter); }
+  .coat > .inner { position: relative; max-width: 74rem; margin: 0 auto; }
+  .edge { position: absolute; left: 0; bottom: calc(100% - 2px); width: 100%; height: clamp(30px, 5vw, 70px); fill: var(--bg); pointer-events: none; }
+  .edge path { filter: url(#rough); }
+  .backstroke { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+  /* Buttons: a leaf of gold */
+  .btn {
+    position: relative; isolation: isolate; display: inline-block;
+    padding: 1.05em 2em; color: var(--ink); text-decoration: none;
+    font-family: var(--sans); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase;
+  }
+  .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--gilt); filter: url(#leaf); transition: filter 0.25s ease, transform 0.25s ease; }
+  .btn:hover::before { transform: scale(1.03); filter: url(#leaf) brightness(1.1); }
+  .btn.ghost { color: var(--gold-pale); }
+  .btn.ghost::before { background: none; border: 1px solid var(--gold); filter: none; }
+  .btn.ghost:hover::before { background: rgba(217, 183, 106, 0.12); filter: none; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.25rem; }
+
+  /* ---------- Hero: a wall the visitor can gild ---------- */
+  .hero {
+    position: relative; min-height: min(84svh, 50rem);
+    display: flex; flex-direction: column; overflow: hidden;
+    background: linear-gradient(174deg, transparent 14%, #4A2280 15% 36%, transparent 37%), var(--wall-deep);
+  }
+  #paint { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--wall-deep); pointer-events: none; }
+  .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 30% 45%, transparent 40%, rgba(29, 11, 51, 0.55) 100%); }
+  .nav { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.75rem var(--gutter); }
+  .wordmark { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 1.9rem; line-height: 1; text-decoration: none; letter-spacing: 0.01em; }
+  .nav ul { display: flex; align-items: center; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
+  .nav li a { text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+  .nav li a:hover { border-color: var(--gold); }
+  .hero-body { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1rem var(--gutter) clamp(4rem, 8vw, 6.5rem); }
+  h1 { font-size: clamp(3rem, 8.6vw, 8.25rem); line-height: 0.98; font-weight: 300; text-shadow: 0 2px 30px rgba(29, 11, 51, 0.7); }
+  h1 span { display: block; }
+  h1 .l2 { padding-left: 1.1em; }
+  .rule { width: min(38vw, 22rem); height: 14px; margin: clamp(1.25rem, 2.5vw, 2rem) 0; }
+  .hero-body p { max-width: 38ch; font-size: clamp(1.05rem, 1.4vw, 1.2rem); margin-bottom: 2.25rem; color: var(--ivory); text-shadow: 0 1px 14px var(--wall-deep), 0 0 2px var(--wall-deep); }
+  .hint { position: absolute; z-index: 1; right: var(--gutter); bottom: clamp(2.5rem, 5vw, 4rem); display: none; font-family: var(--display); font-style: italic; font-size: 1.2rem; color: var(--gold-pale); text-shadow: 0 1px 10px var(--wall-deep); }
+  @media (hover: hover) and (pointer: fine) { .hint { display: block; } }
+
+  /* ---------- The cause ---------- */
+  .cause { --bg: var(--wall); }
+  .cause .top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: center; }
+  .statement { font-family: var(--display); font-style: italic; font-weight: 300; font-size: clamp(2.1rem, 4.4vw, 3.75rem); line-height: 1.1; }
+  .cause .prose { max-width: 32rem; color: var(--mist); }
+  .cause .prose::first-letter { font-family: var(--display); font-size: 4.4em; float: left; line-height: 0.74; padding: 0.1em 0.1em 0 0; color: var(--gold); }
+  .covers { margin-top: clamp(2.5rem, 5vw, 4rem); }
+  .covers .lead { font-family: var(--display); font-style: italic; font-size: 1.45rem; color: var(--gold-pale); margin-bottom: 1.1rem; }
+  .covers ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid rgba(217, 183, 106, 0.55); border-bottom: 1px solid rgba(217, 183, 106, 0.55); }
+  .covers li { padding: 1.35rem 0.75rem; text-align: center; }
+  .covers li + li { border-left: 1px solid rgba(217, 183, 106, 0.3); }
+
+  /* ---------- Collection heads ---------- */
+  .head { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .head .numeral { display: block; font-family: var(--display); font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .head p { max-width: 30rem; margin: 1.1rem auto 0; color: var(--mist); }
+  .head .terms { display: block; margin-top: 1.1rem; color: var(--gold-pale); }
+
+  /* ---------- I. The originals: gilt frames, museum light ---------- */
+  .originals {
+    --bg: var(--wall-deep);
+    background-image:
+      radial-gradient(26% 44% at 38% 54%, rgba(243, 227, 179, 0.17), transparent 72%),
+      radial-gradient(26% 44% at 62% 54%, rgba(243, 227, 179, 0.17), transparent 72%);
+  }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.25rem, 5vw, 4rem); max-width: 34rem; margin: 0 auto; }
+  .frame { padding: clamp(7px, 1.1vw, 14px); background: var(--gilt); box-shadow: 0 3.5rem 5rem -2rem rgba(10, 2, 20, 0.85), 0 0 0 1px rgba(29, 11, 51, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.35), inset 0 0 0 5px rgba(143, 106, 30, 0.35); }
+  .mat { padding: clamp(8px, 1.6vw, 20px); background: var(--ivory); box-shadow: inset 0 0 0 1px rgba(29, 11, 51, 0.2), inset 0 3px 10px rgba(29, 11, 51, 0.18); }
+  .slot { position: relative; overflow: hidden; }
+  .slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .original .slot { aspect-ratio: 2 / 5; background: radial-gradient(70% 55% at 30% 30%, rgba(74, 34, 128, 0.16), transparent 70%), radial-gradient(60% 50% at 75% 78%, rgba(217, 183, 106, 0.3), transparent 70%), #EBE2D2; box-shadow: inset 0 0 0 1px rgba(29, 11, 51, 0.18); }
+  .empty { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; padding: 1rem; color: var(--ink); font-family: var(--display); font-style: italic; line-height: 1.2; }
+  .empty b { font-weight: 400; font-size: clamp(1.1rem, 2.2vw, 1.6rem); display: block; }
+  .empty small { font-family: var(--sans); font-style: normal; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.65; }
+  .plate { margin-top: 1.5rem; text-align: center; }
+  .plate .title { font-family: var(--display); font-style: italic; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.15; }
+  .plate .meta { color: var(--mist); font-size: 0.95rem; }
+  .plate .price { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1; margin: 0.8rem 0 0; display: inline-block; }
+
+  /* ---------- II. The prints: a quiet row, evenly hung ---------- */
+  .prints { --bg: var(--wall); }
+  .row { display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(1rem, 2.4vw, 2.5rem); max-width: 68rem; margin: 0 auto; }
+  .print { text-align: center; }
+  .print .frame-slim { padding: 5px; background: #150726; box-shadow: 0 1.8rem 2.4rem -1.2rem rgba(10, 2, 20, 0.8), inset 0 0 0 1px rgba(217, 183, 106, 0.35); transition: transform 0.3s ease; }
+  .print:hover .frame-slim { transform: translateY(-6px); }
+  .print .mat { padding: 11%; }
+  .print .slot { aspect-ratio: 4 / 5; background: var(--wash); box-shadow: inset 0 0 0 1px rgba(29, 11, 51, 0.2); }
+  .print:nth-child(1) .slot { --wash: radial-gradient(70% 55% at 30% 25%, #7B48C6, transparent 70%), radial-gradient(60% 60% at 75% 80%, #D9B76A, transparent 70%), #2C1050; }
+  .print:nth-child(2) .slot { --wash: radial-gradient(65% 50% at 70% 25%, #D9B76A, transparent 70%), radial-gradient(60% 60% at 25% 80%, #4A2280, transparent 70%), #1D0B33; }
+  .print:nth-child(3) .slot { --wash: radial-gradient(60% 55% at 50% 35%, #F3E3B3, transparent 70%), radial-gradient(70% 50% at 40% 90%, #7B48C6, transparent 70%), #4A2280; }
+  .print:nth-child(4) .slot { --wash: radial-gradient(70% 55% at 25% 70%, #C9B3EE, transparent 70%), radial-gradient(55% 55% at 80% 25%, #9C7526, transparent 70%), #3A1863; }
+  .print:nth-child(5) .slot { --wash: radial-gradient(60% 50% at 65% 65%, #D9B76A, transparent 70%), radial-gradient(65% 55% at 25% 20%, #7B48C6, transparent 70%), #1D0B33; }
+  .print .empty { color: var(--ivory); text-shadow: 0 1px 8px rgba(29, 11, 51, 0.7); }
+  .print .empty b { font-size: 1.2rem; }
+  .print .empty small { font-size: 0.56rem; opacity: 0.9; }
+  .print figcaption { padding-top: 1.1rem; }
+  .print .title { font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.2; }
+  .print .price { font-family: var(--display); font-size: 1.35rem; display: block; margin-top: 0.1rem; }
+  .to-buy { margin: clamp(2.5rem, 5vw, 3.75rem) auto 0; text-align: center; font-family: var(--display); font-style: italic; font-size: clamp(1.35rem, 2.4vw, 1.75rem); line-height: 1.3; }
+  .to-buy a { color: var(--gold-pale); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .to-buy a:hover { color: var(--ivory); }
+
+  /* ---------- Close ---------- */
+  .close { --bg: var(--wall-deep); text-align: center; padding-bottom: 2.25rem; overflow: hidden; }
+  .close h2 { font-weight: 300; font-size: clamp(2.75rem, 7vw, 6rem); max-width: 12ch; margin: 0 auto 1.25rem; }
+  .close p { max-width: 30rem; margin: 0 auto 2.25rem; color: var(--mist); }
+  .close p a { color: var(--gold-pale); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .close .actions { justify-content: center; }
+  footer { margin-top: clamp(3rem, 6vw, 4.5rem); padding-top: 1.4rem; border-top: 1px solid rgba(217, 183, 106, 0.3); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; color: var(--mist); }
+
+  @media (max-width: 1000px) {
+    .row { grid-template-columns: repeat(3, 1fr); row-gap: 3rem; }
+  }
+  @media (max-width: 760px) {
+    .nav ul { gap: 1.25rem; }
+    .nav li:first-child { display: none; }
+    h1 .l2 { padding-left: 0.4em; }
+    .cause .top { grid-template-columns: 1fr; }
+    .covers ul { grid-template-columns: 1fr 1fr; }
+    .covers li + li { border-left: 0; }
+    .covers li:nth-child(even) { border-left: 1px solid rgba(217, 183, 106, 0.3); }
+    .covers li:nth-child(n+3) { border-top: 1px solid rgba(217, 183, 106, 0.3); }
+    .covers li:last-child { grid-column: 1 / -1; }
+    .row { grid-template-columns: 1fr 1fr; }
+    .print:nth-child(5) { grid-column: 1 / -1; width: 50%; justify-self: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn::before, .print .frame-slim { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Paint filters, reused across the page -->
+<svg class="defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="brush" filterUnits="userSpaceOnUse" x="-100" y="-100" width="1700" height="1150">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="3" result="wobble"/>
+      <feDisplacementMap in="SourceGraphic" in2="wobble" scale="22" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.28" numOctaves="2" seed="11" result="streak"/>
+      <feColorMatrix in="streak" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.2 0 0 0 -0.62" result="bristle"/>
+      <feComposite in="ragged" in2="bristle" operator="in"/>
+    </filter>
+    <filter id="brush-small" filterUnits="userSpaceOnUse" x="-100" y="-100" width="900" height="900">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="5" result="wobble"/>
+      <feDisplacementMap in="SourceGraphic" in2="wobble" scale="8" xChannelSelector="R" yChannelSelector="G" result="ragged"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.7" numOctaves="2" seed="21" result="streak"/>
+      <feColorMatrix in="streak" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.4 0 0 0 -0.6" result="bristle"/>
+      <feComposite in="ragged" in2="bristle" operator="in"/>
+    </filter>
+    <filter id="rough" x="-5%" y="-40%" width="110%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="7"/>
+      <feDisplacementMap in="SourceGraphic" scale="22" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="leaf" x="-6%" y="-20%" width="112%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="4"/>
+      <feDisplacementMap in="SourceGraphic" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <linearGradient id="gilt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F6E7B4"/><stop offset="0.35" stop-color="#C9A24D"/><stop offset="0.6" stop-color="#F0D58C"/><stop offset="1" stop-color="#9C7526"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="hero" id="top">
+  <canvas id="paint" aria-hidden="true"></canvas>
+
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="#top">will.i.am</a>
+    <ul>
+      <li><a class="engraved" href="https://hirewilliam.com">HireWilliam</a></li>
+      <li><a class="engraved" href="#cause">The cause</a></li>
+      <li><a class="engraved" href="#originals">Originals</a></li>
+      <li><a class="engraved" href="#prints">Prints</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-body">
+    <h1>
+      <span>Where there’s a will,</span>
+      <span class="l2">there’s a way.</span>
+    </h1>
+    <svg class="rule" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M4 8 C 110 3, 260 12, 396 6" fill="none" stroke="url(#gilt)" stroke-width="5" filter="url(#brush-small)"/></svg>
+    <p>African art and AI art prints, sold to fund AI training and job placement for survivors of gender-based violence in Africa.</p>
+    <div class="actions">
+      <a class="btn" href="#originals">View the originals</a>
+      <a class="btn ghost" href="#prints">View the prints</a>
+    </div>
+  </div>
+  <p class="hint" aria-hidden="true">Move your cursor to paint.</p>
+</header>
+
+<main>
+  <!-- ========== THE CAUSE ========== -->
+  <section class="coat cause" id="cause">
+    <svg class="edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 52 C 180 22, 420 70, 720 42 S 1220 64, 1480 34 V140 H-40 Z"/></svg>
+    <div class="inner">
+      <div class="top">
+        <p class="statement">Leaving takes courage. Staying gone takes an income.</p>
+        <p class="prose">Many survivors of gender-based violence stay where they are because they cannot afford to go. will.i.am turns art into a way out: AI training, a job at the end of it, and an income of their own.</p>
+      </div>
+      <div class="covers">
+        <p class="lead">Every sale helps cover a survivor’s</p>
+        <ul>
+          <li class="engraved">Training</li>
+          <li class="engraved">Resources</li>
+          <li class="engraved">Feeding scheme</li>
+          <li class="engraved">Study guides</li>
+          <li class="engraved">Equipment</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COLLECTION I: AFRICAN ART ORIGINALS, $8,000 EACH ========== -->
+  <section class="coat originals" id="originals">
+    <svg class="edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 40 C 260 68, 520 22, 800 48 S 1260 26, 1480 52 V140 H-40 Z"/></svg>
+    <svg class="backstroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M-60 560 C 320 440, 900 680, 1500 500" fill="none" stroke="#40206E" stroke-width="280" filter="url(#brush)"/>
+    </svg>
+    <div class="inner">
+      <div class="head">
+        <span class="numeral gold-text">I</span>
+        <h2>The Originals</h2>
+        <p>Two original works of African art.</p>
+        <span class="terms engraved">Two works, $8,000 each</span>
+      </div>
+
+      <div class="pair">
+        <!--
+          ORIGINAL I
+          To load your artwork: delete the <div class="empty">…</div> line below and put this in its place:
+          <img src="your-photo.jpg" alt="Short description of the artwork">
+          The frame is 2:5 portrait. For a different shape, change aspect-ratio on ".original .slot" in the CSS.
+        -->
+        <figure class="original">
+          <div class="frame"><div class="mat"><div class="slot">
+            <img src="painting-1.jpg" alt="A dancer in a feathered skirt and cuffs, painted in black on a yellow and green ground, arms raised mid-step">
+          </div></div></div>
+          <figcaption class="plate">
+            <div class="title">Title of the piece</div>
+            <div class="meta">Artist name, country</div>
+            <div class="meta">Medium, size</div>
+            <div class="price gold-text">$8,000</div>
+          </figcaption>
+        </figure>
+
+        <!-- ORIGINAL II: load it the same way -->
+        <figure class="original">
+          <div class="frame"><div class="mat"><div class="slot">
+            <img src="painting-2.jpg" alt="A dancer in a blue top and feathered skirt holding a rattle, painted in black on a red, orange and green ground">
+          </div></div></div>
+          <figcaption class="plate">
+            <div class="title">Title of the piece</div>
+            <div class="meta">Artist name, country</div>
+            <div class="meta">Medium, size</div>
+            <div class="price gold-text">$8,000</div>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="to-buy">To buy an original, email <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a></p>
+    </div>
+  </section>
+
+  <!-- ========== COLLECTION II: AI ART PRINTS, $80 EACH ========== -->
+  <section class="coat prints" id="prints">
+    <svg class="edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 46 C 200 70, 480 24, 760 50 S 1180 28, 1480 46 V140 H-40 Z"/></svg>
+    <div class="inner">
+      <div class="head">
+        <span class="numeral gold-text">II</span>
+        <h2>The Prints</h2>
+        <p>Art made with AI, sold to pay for AI training. A place on someone’s way out, for the price of a print.</p>
+        <span class="terms engraved">Five prints, $80 each</span>
+      </div>
+
+      <!-- The five prints are embedded in this file. To swap one, replace its <img> tag with: <img src="your-print.jpg" alt="Short description"> -->
+      <div class="row">
+        <figure class="print">
+          <div class="frame-slim"><div class="mat"><div class="slot"><img src="print-1.jpg" alt="A door standing ajar in a purple wall, gold light spilling through and a gold line leading in" loading="lazy"></div></div></div>
+          <figcaption>
+            <div class="title">Threshold</div>
+            <span class="price gold-text">$80</span>
+          </figcaption>
+        </figure>
+        <figure class="print">
+          <div class="frame-slim"><div class="mat"><div class="slot"><img src="print-2.jpg" alt="A woman seen from behind in a mantle of gold mosaic, gold leaf falling around her" loading="lazy"></div></div></div>
+          <figcaption>
+            <div class="title">The Mantle</div>
+            <span class="price gold-text">$80</span>
+          </figcaption>
+        </figure>
+        <figure class="print">
+          <div class="frame-slim"><div class="mat"><div class="slot"><img src="print-3.jpg" alt="A woman’s face in shades of purple, made up of thousands of small portraits of other women" loading="lazy"></div></div></div>
+          <figcaption>
+            <div class="title">She Is Many</div>
+            <span class="price gold-text">$80</span>
+          </figcaption>
+        </figure>
+        <figure class="print">
+          <div class="frame-slim"><div class="mat"><div class="slot"><img src="print-4.jpg" alt="A violet glazed bowl, broken and mended with seams of gold, resting on purple paint strokes" loading="lazy"></div></div></div>
+          <figcaption>
+            <div class="title">Mended</div>
+            <span class="price gold-text">$80</span>
+          </figcaption>
+        </figure>
+        <figure class="print">
+          <div class="frame-slim"><div class="mat"><div class="slot"><img src="print-5.jpg" alt="A phoenix in thick gold paint strokes rising from grey ash on a violet ground" loading="lazy"></div></div></div>
+          <figcaption>
+            <div class="title">Phoenix</div>
+            <span class="price gold-text">$80</span>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="to-buy">To buy a print, email <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a></p>
+    </div>
+  </section>
+
+  <!-- ========== CLOSE ========== -->
+  <section class="coat close">
+    <svg class="edge" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M-40 50 C 220 26, 460 68, 740 40 S 1200 60, 1480 34 V140 H-40 Z"/></svg>
+    <svg class="backstroke" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <g filter="url(#brush)" fill="none">
+        <path d="M-60 330 C 360 220, 900 460, 1500 270" stroke="#40206E" stroke-width="260"/>
+      </g>
+    </svg>
+    <div class="inner">
+      <h2>Hang something that matters.</h2>
+      <p>Every piece is sold by email. Write to <a href="mailto:info@hirewilliam.com">info@hirewilliam.com</a> to buy an original or a print, or to support the program another way.</p>
+      <div class="actions">
+        <a class="btn" href="#originals">View the originals</a>
+        <a class="btn ghost" href="#prints">View the prints</a>
+      </div>
+      <footer class="engraved">
+        <span>will.i.am</span>
+        <span>Where there’s a will, there’s a way</span>
+        <span>© 2026</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script>
+/* The hero wall: a bristle brush paints it on load, then follows the visitor's cursor in gold and violet. */
+(function () {
+  var hero = document.querySelector('.hero');
+  var cv = document.getElementById('paint');
+  if (!hero || !cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, run = 0;
+
+  function rng(seed) {
+    return function () {
+      seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function makeBrush(color, width, rand) {
+    var n = Math.max(6, Math.round(width / 2.2)), b = [];
+    for (var i = 0; i < n; i++) {
+      b.push({ o: (i / (n - 1) - 0.5) * width + (rand() - 0.5) * 2, a: 0.25 + rand() * 0.55, w: 1.2 + rand() * 3, dry: rand() * 0.35 });
+    }
+    return { color: color, b: b, nx: null, ny: null };
+  }
+
+  function seg(br, x0, y0, x1, y1, press, rand) {
+    var dx = x1 - x0, dy = y1 - y0, len = Math.hypot(dx, dy);
+    if (len < 0.5) return;
+    var nx = -dy / len, ny = dx / len, px = nx, py = ny;
+    if (br.nx !== null) {
+      px = br.nx; py = br.ny;
+      nx = px * 0.7 + nx * 0.3; ny = py * 0.7 + ny * 0.3;
+      var l = Math.hypot(nx, ny) || 1; nx /= l; ny /= l;
+    }
+    br.nx = nx; br.ny = ny;
+    ctx.strokeStyle = br.color; ctx.lineCap = 'butt';
+    for (var i = 0; i < br.b.length; i++) {
+      var s = br.b[i];
+      if (rand() < s.dry * (1.6 - press)) continue;
+      ctx.globalAlpha = s.a * press; ctx.lineWidth = s.w;
+      ctx.beginPath();
+      ctx.moveTo(x0 + px * s.o, y0 + py * s.o);
+      ctx.lineTo(x1 + nx * s.o, y1 + ny * s.o);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  /* Opening strokes: bezier points as fractions of the wall, colour, width as a fraction of height */
+  var AUTO = [
+    { p: [-0.05, 0.2, 0.3, 0.06, 0.6, 0.36, 1.05, 0.15], c: '#5A2B9C', w: 0.3 },
+    { p: [1.05, 0.52, 0.7, 0.38, 0.3, 0.66, -0.05, 0.48], c: '#7446BE', w: 0.2 },
+    { p: [-0.05, 0.84, 0.3, 0.72, 0.7, 0.95, 1.05, 0.78], c: '#4A2184', w: 0.3 },
+    { p: [0.48, 0.3, 0.64, 0.22, 0.84, 0.4, 1.03, 0.3], c: '#B99AE8', w: 0.035 },
+    { p: [0.55, 0.7, 0.68, 0.64, 0.82, 0.76, 0.98, 0.67], c: '#D9B76A', w: 0.022 },
+    { p: [0.62, 0.13, 0.72, 0.1, 0.84, 0.16, 0.95, 0.11], c: '#F3E3B3', w: 0.01 }
+  ];
+  function pt(s, t) {
+    var u = 1 - t, p = s.p, a = u * u * u, b = 3 * u * u * t, c = 3 * u * t * t, d = t * t * t;
+    return [(a * p[0] + b * p[2] + c * p[4] + d * p[6]) * W, (a * p[1] + b * p[3] + c * p[5] + d * p[7]) * H];
+  }
+  function drawAuto(animated) {
+    var token = ++run, rand = rng(7), i = 0, k = 0, br = null, prev = null, N = 56;
+    function step() {
+      if (token !== run) return;
+      var budget = animated ? 2 : 1e9;
+      while (budget-- > 0) {
+        if (i >= AUTO.length) return;
+        var s = AUTO[i];
+        if (!br) { br = makeBrush(s.c, s.w * H, rand); prev = pt(s, 0); k = 1; }
+        var q = pt(s, k / N);
+        seg(br, prev[0], prev[1], q[0], q[1], 1 - 0.45 * Math.pow(k / N, 2), rand);
+        prev = q; k++;
+        if (k > N) { i++; br = null; }
+      }
+      requestAnimationFrame(step);
+    }
+    step();
+  }
+
+  function setup() {
+    var r = hero.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  /* The visitor's brush: reloads with gold, pale gold or violet each time it runs dry */
+  var PAL = ['#D9B76A', '#B99AE8', '#F3E3B3', '#8E5FD8', '#C9A24D'];
+  var ci = 0, ub = null, last = null, lastT = 0, dist = 0, urand = rng(99);
+  hero.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    var r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top, now = performance.now();
+    if (!ub || now - lastT > 260 || dist > 1100) {
+      ub = makeBrush(PAL[ci++ % PAL.length], 16 + urand() * 26, urand);
+      if (now - lastT > 260) last = null;
+      dist = 0;
+    }
+    if (last) {
+      dist += Math.hypot(x - last[0], y - last[1]);
+      seg(ub, last[0], last[1], x, y, Math.max(0.12, 1 - dist / 1100), urand);
+    }
+    last = [x, y]; lastT = now;
+  });
+
+  var lastW = 0, timer = 0;
+  window.addEventListener('resize', function () {
+    if (window.innerWidth === lastW) return;
+    lastW = window.innerWidth;
+    clearTimeout(timer);
+    timer = setTimeout(function () { setup(); drawAuto(false); }, 150);
+  });
+
+  lastW = window.innerWidth;
+  setup();
+  drawAuto(!reduce);
+})();
+</script>
+</body>
+</html>
