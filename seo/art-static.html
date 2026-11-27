@@ -1,0 +1,269 @@
+<!--
+  Static crawler copy and structured data for https://hirewilliam.com/art/
+
+  Read at build time by the routedPages() plugin in vite.config.js, which builds
+  dist/art/index.html from dist/index.html: the <meta name="description"> below
+  becomes the page description, every <script type="application/ld+json"> block
+  moves into <head>, and the remaining markup goes inside <div id="root">, where
+  React replaces it with the app shell and the framed gallery (public/art/gallery.html).
+-->
+<meta name="description" content="African art and AI art prints, sold to fund AI training and job placement for survivors of gender-based violence in Africa.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://hirewilliam.com/art/",
+      "url": "https://hirewilliam.com/art/",
+      "name": "Purchase With a Purpose | Where there’s a will, there’s a way",
+      "description": "African art and AI art prints, sold to fund AI training and job placement for survivors of gender-based violence in Africa.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "HireWilliam",
+        "url": "https://hirewilliam.com"
+      },
+      "about": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://hirewilliam.com/art/painting-1.jpg"
+      },
+      "datePublished": "2026-11-26",
+      "dateModified": "2026-11-26",
+      "publisher": {
+        "@id": "https://hirewilliam.com/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://hirewilliam.com/art/#breadcrumb"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hirewilliam.com/art/#programme",
+      "name": "Purchase With a Purpose",
+      "alternateName": [
+        "the Purchase With a Purpose programme by HireWilliam",
+        "will.i.am",
+        "i will. i am."
+      ],
+      "slogan": "Where there’s a will, there’s a way",
+      "url": "https://hirewilliam.com/art/",
+      "description": "The Purchase With a Purpose programme by HireWilliam sells original African art and AI art prints to fund AI training and job placement for survivors of gender-based violence in Africa. Every sale helps cover a survivor’s training, resources, feeding scheme, study guides and equipment.",
+      "disambiguatingDescription": "Purchase With a Purpose is a HireWilliam art programme that funds AI training and job placement for survivors of gender-based violence in Africa.",
+      "parentOrganization": {
+        "@id": "https://hirewilliam.com/#organization"
+      },
+      "email": "info@hirewilliam.com",
+      "areaServed": {
+        "@type": "Continent",
+        "name": "Africa"
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#original-1",
+      "name": "Original I",
+      "category": "Original work of African art",
+      "image": "https://hirewilliam.com/art/painting-1.jpg",
+      "description": "Original work of African art: A dancer in a feathered skirt and cuffs, painted in black on a yellow and green ground, arms raised mid-step. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#originals",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "8000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#originals",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "Original I is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#original-2",
+      "name": "Original II",
+      "category": "Original work of African art",
+      "image": "https://hirewilliam.com/art/painting-2.jpg",
+      "description": "Original work of African art: A dancer in a blue top and feathered skirt holding a rattle, painted in black on a red, orange and green ground. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#originals",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "8000",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#originals",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "Original II is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#print-1",
+      "name": "Threshold",
+      "category": "AI art print",
+      "image": "https://hirewilliam.com/art/print-1.jpg",
+      "description": "AI art print: A door standing ajar in a purple wall, gold light spilling through and a gold line leading in. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#prints",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#prints",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "Threshold is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#print-2",
+      "name": "The Mantle",
+      "category": "AI art print",
+      "image": "https://hirewilliam.com/art/print-2.jpg",
+      "description": "AI art print: A woman seen from behind in a mantle of gold mosaic, gold leaf falling around her. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#prints",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#prints",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "The Mantle is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#print-3",
+      "name": "She Is Many",
+      "category": "AI art print",
+      "image": "https://hirewilliam.com/art/print-3.jpg",
+      "description": "AI art print: A woman’s face in shades of purple, made up of thousands of small portraits of other women. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#prints",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#prints",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "She Is Many is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#print-4",
+      "name": "Mended",
+      "category": "AI art print",
+      "image": "https://hirewilliam.com/art/print-4.jpg",
+      "description": "AI art print: A violet glazed bowl, broken and mended with seams of gold, resting on purple paint strokes. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#prints",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#prints",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "Mended is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "https://hirewilliam.com/art/#print-5",
+      "name": "Phoenix",
+      "category": "AI art print",
+      "image": "https://hirewilliam.com/art/print-5.jpg",
+      "description": "AI art print: A phoenix in thick gold paint strokes rising from grey ash on a violet ground. Sold to fund the Purchase With a Purpose programme by HireWilliam. Purchase is by email to info@hirewilliam.com.",
+      "url": "https://hirewilliam.com/art/#prints",
+      "brand": {
+        "@id": "https://hirewilliam.com/art/#programme"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "80",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "url": "https://hirewilliam.com/art/#prints",
+        "seller": {
+          "@id": "https://hirewilliam.com/#organization"
+        },
+        "description": "Phoenix is sold by email. Write to info@hirewilliam.com to buy it."
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://hirewilliam.com/art/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I buy an original or a print?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every piece is sold by email. Write to info@hirewilliam.com to buy an original or a print, or to support the program another way. The two originals are $8,000 each and the five prints are $80 each."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the money go?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "African art and AI art prints are sold to fund AI training and job placement for survivors of gender-based violence in Africa. Every sale helps cover a survivor’s training, resources, feeding scheme, study guides and equipment."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://hirewilliam.com/art/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://hirewilliam.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Purchase With a Purpose art programme",
+          "item": "https://hirewilliam.com/art/"
+        }
+      ]
+    }
+  ]
+}
+</script>
