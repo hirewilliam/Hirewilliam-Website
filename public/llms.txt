@@ -104,6 +104,7 @@ The will.i.am programme by HireWilliam sells art to fund a survivor's way out: A
 - [HireWilliam vs Traditional AI Agencies](https://hirewilliam.com/compare/hirewilliam-vs-agency/): Side-by-side comparison of modern vs traditional AI agency models
 - [AI Outreach Agent vs Human SDR](https://hirewilliam.com/compare/hirewilliam-vs-human-hire/): Honest cost and capability comparison of deploying William vs hiring a human SDR
 - [AEO & Structured Data](https://hirewilliam.com/hirewilliam-aeo-domination-v2.html): Comprehensive agency overview with chunk-level content for AI retrieval
+- [Pricing (machine-readable)](https://hirewilliam.com/pricing.md): The real HireWilliam prices in one place: recruitment tiers, the $300 registration fee and where it goes, and the art originals and prints
 - [AI Recruitment - Hire an AI Engineer](https://hirewilliam.com/recruitment/): AI-fluent, certified engineers placed inside a founder's team in 3 to 5 business days. $1,500 per month for 20 hours a week or $2,800 per month for 40, month to month
 - [will.i.am art programme](https://hirewilliam.com/art/): Original African art ($8,000 each) and AI art prints ($80 each) sold by email to fund the will.i.am programme by HireWilliam: AI training and job placement for survivors of gender-based violence in Africa
 
