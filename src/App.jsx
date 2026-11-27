@@ -196,12 +196,12 @@ function Sidebar({ active, onNav, onClose }) {
         </div>
         William
       </div>
-      {/* will.i.am art program - standalone page at /art/ */}
+      {/* Purchase With a Purpose art program - standalone page at /art/ */}
       <a href="/art/" style={{ padding: isMobile ? "8px 10px" : "5px 10px", minHeight: isMobile ? 44 : undefined, borderRadius: 5, marginTop: 1, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", boxSizing: "border-box", transition: "all 0.15s" }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.color = "#fff"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(255,255,255,0.5)"; }}>
         <div style={{ width: 18, height: 18, borderRadius: 4, background: "linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #7C3AED 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700, color: "#fff", flexShrink: 0 }}>A</div>
-        will.i.am art
+        Purchase With a Purpose art
       </a>
 
       {/* Social icons - pinned to bottom */}
@@ -2182,7 +2182,7 @@ function RecruitmentView({ onNav }) {
                 </div>
                 <div className="rr-note">
                   <span>💜</span>
-                  <div><strong>One-time registration fee: $300, non-refundable.</strong> It doesn’t go to us. Every registration fee is donated in full to the i will. i am. programme, which funds education for women who are survivors of gender-based violence.</div>
+                  <div><strong>One-time registration fee: $300, non-refundable.</strong> It doesn’t go to us. Every registration fee is donated in full to the Purchase With a Purpose programme, which funds education for women who are survivors of gender-based violence.</div>
                 </div>
                 <div className="rr-cta"><RequestBtn /></div>
               </div>
