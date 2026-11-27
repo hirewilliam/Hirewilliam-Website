@@ -67,8 +67,15 @@ const decodeEntities = (s) => s.replace(/&(#?\w+);/g, (m, e) => ENTITIES[e] ?? m
 // the compiled React bundle, otherwise the static page has drifted from the
 // view that replaces it. Text is split at tag boundaries first because that is
 // how JSX splits it into string literals.
+//
+// Elements carrying a `data-crawler-only` attribute are exempt: they hold
+// crawler-facing framing that has no counterpart in the view (a direct-answer
+// summary, question-shaped headings, a "Last updated" line). Keep them few and
+// keep every fact in them identical to the view.
 function sentencesOf(bodyHtml) {
-  const text = bodyHtml.replace(/<(script|style)\b[\s\S]*?<\/\1>/g, '')
+  const text = bodyHtml
+    .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, '')
+    .replace(/<(\w+)\b[^>]*\sdata-crawler-only\b[^>]*>[\s\S]*?<\/\1>/g, '')
   const out = []
   for (const node of text.split(/<[^>]+>/)) {
     const clean = decodeEntities(node).replace(/\s+/g, ' ').trim()
