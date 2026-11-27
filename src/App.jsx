@@ -2090,7 +2090,7 @@ function RecruitmentView({ onNav }) {
                     <div className="ff-psl"><div className="ff-psn">1</div><div className="ff-psl-line" /></div>
                     <div className="ff-psc">
                       <div className="ff-pst">Tell us you need an engineer</div>
-                      <div className="ff-psd">One message in #talk-to-william. You don’t need a job description, a budget line or a project plan. We take it from here.</div>
+                      <div className="ff-psd">One message in #recruitment, or an email to info@hirewilliam.com. You don’t need a job description, a budget line or a project plan. We take it from here.</div>
                     </div>
                   </div>
                   <div className="ff-pstep">
