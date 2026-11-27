@@ -2662,7 +2662,7 @@ function MobileBottomNav({ active, onNav }) {
 const PAGE_PATHS = { recruitment: "/recruitment", art: "/art" };
 const PAGE_TITLES = {
   recruitment: "AI Recruitment - Hire an AI Engineer | HireWilliam",
-  art: "Purchase With a Purpose | Where there’s a will, there’s a way",
+  art: "Purchase With a Purpose Art Programme | HireWilliam",
 };
 const DEFAULT_TITLE = typeof document !== "undefined" ? document.title : "HireWilliam";
 const trimSlash = (p) => p.replace(/\/+$/, "") || "/";

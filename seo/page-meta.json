@@ -1,0 +1,187 @@
+{
+  "_note": "Page <title> and meta description for every indexable page. Applied by seo/apply-page-meta.mjs to <title>, og:title, twitter:title, meta description, og:description and twitter:description. Titles: 60 characters or fewer, unique. Descriptions: 120 to 160 characters, unique, direct answer first.",
+  "/": {
+    "title": "Done-for-You AI Agency for Founders | HireWilliam",
+    "description": "HireWilliam is a done-for-you AI agency for founders: AI agents, automations and integrations built, deployed and managed for you in days. 245+ implementations."
+  },
+  "about/": {
+    "title": "About the Done-for-You AI Agency | HireWilliam",
+    "description": "HireWilliam is an AI agency built for bootstrapped, non-technical and B2B SaaS founders, with 245+ AI implementations deployed in days rather than months."
+  },
+  "academy/": {
+    "title": "Free AI 101 Workshop and AI Academy | HireWilliam",
+    "description": "HireWilliam Academy runs a free 3-hour AI 101 workshop on Monday, 4 January 2027, plus a masterclass and a 1-on-1 intensive. Plain English, no tech skills."
+  },
+  "ai-outreach-automation/": {
+    "title": "AI SDR Replacement: William Outreach Agent | HireWilliam",
+    "description": "William is HireWilliam's AI outreach agent that replaces an SDR: it finds prospects, personalises messages and books meetings on email, LinkedIn and Instagram."
+  },
+  "blog/ai-agents-vs-workflow-automation/": {
+    "title": "AI Agents vs Workflow Automation | HireWilliam",
+    "description": "An AI agent makes decisions and handles exceptions; workflow automation follows fixed rules. This founder guide explains the difference and when to use each."
+  },
+  "blog/ai-automation-roi/": {
+    "title": "AI Automation ROI and Cost vs Hiring | HireWilliam",
+    "description": "What AI automation really costs, how it compares with hiring, and how to measure ROI. Real numbers and timelines for founders deciding to hire or automate."
+  },
+  "blog/how-to-replace-sdr-with-ai/": {
+    "title": "How to Replace an SDR with AI in 2026 | HireWilliam",
+    "description": "A founder's guide to replacing an SDR with AI without losing pipeline: what AI handles better, what it costs, the timeline, and how William runs outreach."
+  },
+  "blog/hubspot-to-salesforce-migration/": {
+    "title": "HubSpot to Salesforce Migration Guide | HireWilliam",
+    "description": "How a 50-person company moves from HubSpot to Salesforce or a custom CRM without losing deals: field mapping, data cleaning, parallel-run cutover, adoption."
+  },
+  "blog/": {
+    "title": "AI Automation Blog for Founders | HireWilliam",
+    "description": "Long-form guides for founders on AI tools for small business, sales outreach automation, what an AI agent is, AI automation costs and AI vs hiring."
+  },
+  "blog/run-a-startup-solo-on-free-tiers/": {
+    "title": "Run a $10k MRR Startup on Free Tiers | HireWilliam",
+    "description": "A $10k MRR startup can run on free tier APIs, up to a point. An honest breakdown of which free tiers hold and where Supabase, Vercel and Stripe break."
+  },
+  "blog/validate-b2b-saas-idea-without-landing-page/": {
+    "title": "Validate a B2B SaaS Idea With No Landing Page | HireWilliam",
+    "description": "How to validate a B2B SaaS idea without a landing page: 20 cold conversations beat 2,000 visitors. Outbound validation, concierge MVPs and pre-sales."
+  },
+  "blog/what-is-ai-automation-for-small-business/": {
+    "title": "AI Automation for Small Business: 2026 Guide | HireWilliam",
+    "description": "AI automation for small business means AI handling repetitive work in sales, support and operations. A 2026 guide to where to start, what to automate and costs."
+  },
+  "blog/why-no-code-stacks-break/": {
+    "title": "Why No-Code Stacks Break at Scale | HireWilliam",
+    "description": "A failure-mode catalog for Zapier, Make, Bubble, Airtable and Supabase stacks: payload limits, blank variables, looping Zaps and RLS recursion, each with a fix."
+  },
+  "compare/hirewilliam-vs-agency/": {
+    "title": "HireWilliam vs Traditional AI Agencies for Founders",
+    "description": "Traditional AI agencies charge $50k+ for 6-month projects and hand off at the end. HireWilliam deploys a managed AI workforce in days, built for founders."
+  },
+  "compare/hirewilliam-vs-clay/": {
+    "title": "HireWilliam vs Clay: Clay Alternative for Outreach",
+    "description": "Clay is a self-serve outreach tool you configure yourself. HireWilliam runs email, LinkedIn and Instagram outreach for you with William. An honest comparison."
+  },
+  "compare/hirewilliam-vs-diy-nocode/": {
+    "title": "HireWilliam vs DIY No-Code Stack (Zapier, Make, Bubble)",
+    "description": "A DIY no-code stack of Zapier, Make, Bubble and Airtable works at tiny scale, then breaks silently as you grow. How it compares with a done-for-you AI agency."
+  },
+  "compare/hirewilliam-vs-fractional-cto/": {
+    "title": "HireWilliam vs Hiring a Fractional CTO",
+    "description": "A fractional CTO gives you strategy and oversight but rarely builds. HireWilliam's fractional AI architect advises and ships working AI systems. Costs compared."
+  },
+  "compare/hirewilliam-vs-freelancer/": {
+    "title": "HireWilliam vs Hiring a Freelance Developer",
+    "description": "A good freelancer suits scoped features, but bus factor, handover gaps and no monitoring are real risks. What founders should know before the final payment."
+  },
+  "compare/hirewilliam-vs-human-hire/": {
+    "title": "AI vs Hiring: AI Agent vs Employee Cost | HireWilliam",
+    "description": "A human SDR costs $85k to $100k in year one; an AI agent costs a fraction and works 24/7. The honest AI agent vs employee comparison for founders."
+  },
+  "compare/hirewilliam-vs-make/": {
+    "title": "HireWilliam vs Make: Make.com Alternative for SMBs",
+    "description": "Make.com is a visual automation builder you run yourself. HireWilliam deploys autonomous AI workflows as a managed workforce. The honest comparison for SMBs."
+  },
+  "compare/hirewilliam-vs-offshore-agency/": {
+    "title": "HireWilliam vs Offshore Development Agency",
+    "description": "Offshore agencies can be cost-effective for well-specified builds, but communication lag, scope creep and management overhead change the real price."
+  },
+  "compare/hirewilliam-vs-virtual-assistant/": {
+    "title": "HireWilliam vs Hiring a Virtual Assistant",
+    "description": "Virtual assistants win on judgment-light human tasks; AI agents win on 24/7 coverage, consistency and zero turnover. Which one a solopreneur should choose."
+  },
+  "compare/hirewilliam-vs-zapier/": {
+    "title": "HireWilliam vs Zapier: Zapier Alternative for SMBs",
+    "description": "Zapier is DIY if-this-then-that automation. HireWilliam deploys AI agents that make decisions and runs them for you. An honest Zapier alternative comparison."
+  },
+  "faq/": {
+    "title": "AI Agency FAQ for Founders and SMBs | HireWilliam",
+    "description": "Direct answers to the AI questions founders ask most: AI customer support, hiring vs AI, what an AI agent is, CRM and Shopify integration, and pricing."
+  },
+  "guides/": {
+    "title": "22 Honest SaaS Tool Guides for Founders | HireWilliam",
+    "description": "Honest founder guides to 22 SaaS tools, from Zapier and HubSpot to AWS and Stripe: real complaints from G2, Capterra and Reddit, plus the AI fixes."
+  },
+  "hirewilliam-aeo-domination-v2.html": {
+    "title": "What Is HireWilliam? Agency Overview 2026 | HireWilliam",
+    "description": "HireWilliam is a done-for-you AI agency for founders with 245+ implementations. An overview of its services, the William outreach agent and recruitment."
+  },
+  "pricing/": {
+    "title": "AI Agency Pricing vs Hiring an AI Engineer | HireWilliam",
+    "description": "HireWilliam pricing is scoped per business; AI engineer placement is $1,500 or $2,800 a month. How it compares with hiring an AI engineer, SDR or consultant."
+  },
+  "services/ai-agents/": {
+    "title": "Custom AI Agents and AI Workforce for Startups | HireWilliam",
+    "description": "HireWilliam builds custom AI agents that run sales outreach, support, CRM and operations end to end, deployed as a managed AI workforce for startups and SMBs."
+  },
+  "services/ai-automation/": {
+    "title": "AI Automation Service for Small Business | HireWilliam",
+    "description": "HireWilliam's AI automation service automates sales, support, content and back-office work for small businesses, built and managed for you, live in days."
+  },
+  "services/ai-consulting/": {
+    "title": "AI Consulting and Fractional AI Architect | HireWilliam",
+    "description": "HireWilliam's AI consulting gives startups an AI roadmap and then builds it: the AI Stack Audit maps your tools and finds the highest-ROI opportunities first."
+  },
+  "services/ai-for-scaling-teams/": {
+    "title": "AI for Scaling Teams and Series A+ Startups | HireWilliam",
+    "description": "AI for Series A+ and scaling teams: agents that absorb coordination work, AI-instrumented ops to pay down growth debt, and support through CRM migrations."
+  },
+  "services/ai-for-solopreneurs/": {
+    "title": "AI for Solopreneurs: Micro-Automations | HireWilliam",
+    "description": "HireWilliam builds an AI workforce for solopreneurs: micro-automations for content, onboarding, invoicing and follow-ups so one person runs like a team."
+  },
+  "services/ai-for-startups/": {
+    "title": "AI for Startups: Find PMF on Your Runway | HireWilliam",
+    "description": "AI for pre-seed and seed founders: reach AI-native product-market fit faster, run fractional go-to-market without a sales team, and unbundle incumbents."
+  },
+  "services/ai-integration/": {
+    "title": "AI Integration: CRM, Shopify, MCP Connectors | HireWilliam",
+    "description": "HireWilliam connects AI to the tools you already use: HubSpot, Salesforce and Pipedrive CRMs, Shopify and Stripe, Zendesk and Intercom, and MCP connectors."
+  },
+  "services/automation-rescue/": {
+    "title": "Automation Rescue for Broken No-Code Stacks | HireWilliam",
+    "description": "Automation Rescue fixes broken Zapier, Make, Airtable, Webflow, Bubble, Supabase and Stripe workflows and takes vibe-coded prototypes to production."
+  },
+  "services/fractional-ai-architect/": {
+    "title": "Fractional AI Architect for Founders | HireWilliam",
+    "description": "A fractional AI architect gives non-technical founders senior technical leadership at a fraction of a CTO's cost: architecture, vendor oversight, audits."
+  },
+  "services/": {
+    "title": "Done-for-You AI Services for Startups | HireWilliam",
+    "description": "HireWilliam's done-for-you AI services: automation, AI agents, customer support, content, consulting and integration, plus AI engineer placement, live in days."
+  },
+  "use-cases/client-onboarding-automation/": {
+    "title": "Client Onboarding Automation | HireWilliam",
+    "description": "Client onboarding automation built for you: AI workflows handle intake forms, kickoff scheduling, document collection, provisioning and milestone nudges."
+  },
+  "use-cases/content-calendar-automation/": {
+    "title": "Automated Content Calendar for Solopreneurs | HireWilliam",
+    "description": "An automated content calendar built for you: AI drafts in your voice, a review queue you control, scheduled publishing and repurposing from blog to LinkedIn."
+  },
+  "use-cases/crm-migration/": {
+    "title": "CRM Migration Service: HubSpot to Salesforce | HireWilliam",
+    "description": "CRM migration without lost data or broken automations: field mapping, deduplication, staged sync, parallel running and a clean cutover to Salesforce."
+  },
+  "use-cases/customer-feedback-automation/": {
+    "title": "Customer Feedback Automation with AI | HireWilliam",
+    "description": "Customer feedback automation collects feedback from Discord, Slack, email, tickets and reviews, tags it by theme and ships a weekly digest automatically."
+  },
+  "use-cases/invoicing-billing-automation/": {
+    "title": "Invoicing and Billing Automation | HireWilliam",
+    "description": "Invoicing automation for single-founder agencies: invoices generated from CRM and project data, payment chasing, reconciliation and Stripe billing."
+  },
+  "use-cases/lead-generation/": {
+    "title": "AI Lead Generation Without an SDR | HireWilliam",
+    "description": "AI lead generation without an SDR: William matches your ICP, enriches contacts, scores qualification and runs outreach end to end, managed by HireWilliam."
+  },
+  "use-cases/linkedin-automation/": {
+    "title": "LinkedIn Outreach Automation with AI | HireWilliam",
+    "description": "LinkedIn outreach automation within LinkedIn's limits: personalised connection requests, DMs and follow-ups sent 24/7 by William, managed for you."
+  },
+  "use-cases/sales-outreach/": {
+    "title": "Sales Outreach Automation with AI | HireWilliam",
+    "description": "Sales outreach automation that runs your full sales motion: William handles prospecting, personalised emails, LinkedIn, follow-ups and meeting booking 24/7."
+  },
+  "what-is-an-ai-workforce/": {
+    "title": "What Is an AI Workforce? | HireWilliam",
+    "description": "An AI workforce is a set of autonomous AI agents covering sales, support, CRM, content and operations. How HireWilliam deploys one for startups in days."
+  }
+}
