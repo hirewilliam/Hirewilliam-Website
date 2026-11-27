@@ -923,6 +923,7 @@ function MeetingsView() {
   const [doneWins, setDoneWins] = useState([]);
   const containerRef = useRef(null);
   const isRunning = useRef(false);
+  const userScrolled = useRef(false);
 
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const curPosRef = useRef({ x: 0, y: 0 });
@@ -1015,16 +1016,32 @@ function MeetingsView() {
     } catch(e){}
   }
 
-  function getElCenter(id) {
-    const el = document.getElementById(id);
-    if (!el || !containerRef.current) return { x: 0, y: 0 };
+  // Point inside an element, in the scroll container's own coordinates
+  // (the cursor is absolutely positioned inside it, so scroll offset counts).
+  function localPoint(el, fx = 0.5, fy = 0.5, dy = 0) {
+    const c = containerRef.current;
+    if (!el || !c) return { x: 0, y: 0 };
     const er = el.getBoundingClientRect();
-    const cr = containerRef.current.getBoundingClientRect();
-    return { x: er.left - cr.left + er.width / 2, y: er.top - cr.top + er.height / 2 };
+    const cr = c.getBoundingClientRect();
+    return { x: er.left - cr.left + c.scrollLeft + er.width * fx, y: er.top - cr.top + c.scrollTop + er.height * fy + dy };
+  }
+
+  function getElCenter(id) {
+    return localPoint(document.getElementById(id));
+  }
+
+  // Mobile: the windows stack in one column, so bring the one William is
+  // about to work in into view. Stops following once the visitor scrolls.
+  async function focusWin(id) {
+    if (!isMobile || userScrolled.current) return;
+    const c = containerRef.current, el = document.getElementById(id);
+    if (!c || !el) return;
+    const top = Math.max(0, el.getBoundingClientRect().top - c.getBoundingClientRect().top + c.scrollTop - 12);
+    c.scrollTo({ top, behavior: 'smooth' });
+    await sleep(520);
   }
 
   function moveCursorTo(tx, ty, ms = 600) {
-    if (isMobile) return sleep(0);
     return new Promise(resolve => {
       const { x: sx, y: sy } = curPosRef.current;
       const dist = Math.sqrt((tx-sx)*(tx-sx)+(ty-sy)*(ty-sy));
@@ -1071,7 +1088,6 @@ function MeetingsView() {
   }
 
   async function clickEl(id) {
-    if (isMobile) { await sleep(180); return; }
     const c = getElCenter(id);
     // Approach: wide pass, then settle above, then land precisely
     const wx = c.x + (Math.random()>0.5?1:-1)*(38+Math.random()*24);
@@ -1083,7 +1099,7 @@ function MeetingsView() {
     // Final landing - wait for this to fully complete before ripple
     await moveCursorTo(c.x, c.y, 220);
     await sleep(120); // cursor must be visually settled before click
-    playMouseClick();
+    if (!isMobile) playMouseClick();
     setRipple({ x: c.x, y: c.y, key: Date.now() });
     await sleep(280);
   }
@@ -1109,7 +1125,8 @@ function MeetingsView() {
     setCursorVisible(false); setRipple(null); setActiveWin(null); setDoneWins([]);
     await sleep(400);
 
-    if (!isMobile) { setCursorVisible(true); setCursorPos(getElCenter('mw-notion')); }
+    await focusWin('mw-notion');
+    setCursorVisible(true); setCursorPos(getElCenter('mw-notion'));
 
     // NOTION
     setActiveWin('notion');
@@ -1124,10 +1141,10 @@ function MeetingsView() {
     await sleep(300);
     setActiveWin(null); setDoneWins(d => [...d, 'notion']);
     // Visible arc to Airtable
-    if (!isMobile) {
-      const atR = document.getElementById('mw-airtable').getBoundingClientRect();
-      const cr = containerRef.current.getBoundingClientRect();
-      await moveCursorTo(atR.left - cr.left + atR.width*0.3, atR.top - cr.top + 20, 900);
+    {
+      await focusWin('mw-airtable');
+      const pt = localPoint(document.getElementById('mw-airtable'), 0.3, 0, 20);
+      await moveCursorTo(pt.x, pt.y, 900);
     }
     await sleep(250);
 
@@ -1143,10 +1160,10 @@ function MeetingsView() {
     await sleep(300);
     setActiveWin(null); setDoneWins(d => [...d, 'airtable']);
     // Visible arc to Gmail
-    if (!isMobile) {
-      const gmR = document.getElementById('mw-gmail').getBoundingClientRect();
-      const cr = containerRef.current.getBoundingClientRect();
-      await moveCursorTo(gmR.left - cr.left + gmR.width*0.4, gmR.top - cr.top + 20, 900);
+    {
+      await focusWin('mw-gmail');
+      const pt = localPoint(document.getElementById('mw-gmail'), 0.4, 0, 20);
+      await moveCursorTo(pt.x, pt.y, 900);
     }
     await sleep(250);
 
@@ -1165,10 +1182,10 @@ function MeetingsView() {
     setGmailSent(true);
     setActiveWin(null); setDoneWins(d => [...d, 'gmail']);
     // Visible arc to Calendar
-    if (!isMobile) {
-      const gcR = document.getElementById('mw-cal').getBoundingClientRect();
-      const cr = containerRef.current.getBoundingClientRect();
-      await moveCursorTo(gcR.left - cr.left + gcR.width*0.4, gcR.top - cr.top + 20, 900);
+    {
+      await focusWin('mw-cal');
+      const pt = localPoint(document.getElementById('mw-cal'), 0.4, 0, 20);
+      await moveCursorTo(pt.x, pt.y, 900);
     }
     await sleep(300);
 
@@ -1185,14 +1202,15 @@ function MeetingsView() {
     await sleep(400);
 
     // Cursor sweeps down to Slack panel
-    if (!isMobile) {
+    {
       const slackEl = document.getElementById('mw-slack-panel');
       if (slackEl && containerRef.current) {
-        const sr = slackEl.getBoundingClientRect();
-        const cr = containerRef.current.getBoundingClientRect();
-        await moveCursorTo(sr.left - cr.left + sr.width * 0.3, sr.top - cr.top + 20, 900);
+        await focusWin('mw-slack-panel');
+        const a = localPoint(slackEl, 0.3, 0, 20);
+        await moveCursorTo(a.x, a.y, 900);
         await sleep(200);
-        await moveCursorTo(sr.left - cr.left + sr.width * 0.5, sr.top - cr.top + 40, 400);
+        const b = localPoint(slackEl, 0.5, 0, 40);
+        await moveCursorTo(b.x, b.y, 400);
         await sleep(150);
       }
       setCursorVisible(false);
@@ -1233,18 +1251,18 @@ function MeetingsView() {
   const bodyFs = isMobile ? 11 : 12;
 
   return (
-    <div ref={containerRef} style={{ flex: 1, minHeight: 0, overflowY: 'auto', background: '#f0f0f0', padding: isMobile ? 10 : 20, position: 'relative' }}>
+    <div ref={containerRef} onTouchStart={() => { userScrolled.current = true; }} onWheel={() => { userScrolled.current = true; }} style={{ flex: 1, minHeight: 0, overflowY: 'auto', overflowX: isMobile ? 'hidden' : undefined, background: '#f0f0f0', padding: isMobile ? 10 : 20, position: 'relative' }}>
 
-      {/* Cursor desktop only */}
-      {!isMobile && cursorVisible && (
+      {/* Cursor: desktop and mobile */}
+      {cursorVisible && (
         <div style={{ position: 'absolute', left: cursorPos.x, top: cursorPos.y, pointerEvents: 'none', zIndex: 999, transform: 'translate(-3px,-3px)', transition: 'left 0.48s cubic-bezier(.4,0,.2,1), top 0.48s cubic-bezier(.4,0,.2,1)' }}>
-          <svg width="32" height="32" viewBox="0 0 18 18" fill="none" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}>
+          <svg width={isMobile ? 24 : 32} height={isMobile ? 24 : 32} viewBox="0 0 18 18" fill="none" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.45))' }}>
             <path d="M2 2L7.5 16L9.5 10L16 8L2 2Z" fill="white" stroke="#6366f1" strokeWidth="1.2" strokeLinejoin="round"/>
           </svg>
-          <div style={{ position: 'absolute', left: 34, top: 4, background: '#6366f1', color: '#fff', fontSize: 12, fontWeight: 700, padding: '3px 10px', borderRadius: 12, whiteSpace: 'nowrap', boxShadow: '0 2px 10px rgba(99,102,241,0.5)' }}>William</div>
+          <div style={{ position: 'absolute', left: isMobile ? 26 : 34, top: 4, background: '#6366f1', color: '#fff', fontSize: isMobile ? 11 : 12, fontWeight: 700, padding: isMobile ? '2px 8px' : '3px 10px', borderRadius: 12, whiteSpace: 'nowrap', boxShadow: '0 2px 10px rgba(99,102,241,0.5)' }}>William</div>
         </div>
       )}
-      {!isMobile && ripple && (
+      {ripple && (
         <div key={ripple.key} style={{ position: 'absolute', left: ripple.x - 18, top: ripple.y - 18, width: 36, height: 36, border: '2.5px solid #6366f1', borderRadius: '50%', pointerEvents: 'none', zIndex: 998, animation: 'mw-ripple 0.45s ease-out forwards' }} />
       )}
 
