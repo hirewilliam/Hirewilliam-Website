@@ -100,6 +100,9 @@ function IconUsers({ s = 20 }) {
 function IconChart({ s = 20 }) {
   return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>;
 }
+function IconArt({ s = 20 }) {
+  return <svg width={s} height={s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>;
+}
 
 // ── Responsive Hook ──
 function useIsMobile(breakpoint = 768) {
@@ -196,13 +199,13 @@ function Sidebar({ active, onNav, onClose }) {
         </div>
         William
       </div>
-      {/* Purchase With a Purpose art program - standalone page at /art/ */}
-      <a href="/art/" style={{ padding: isMobile ? "8px 10px" : "5px 10px", minHeight: isMobile ? 44 : undefined, borderRadius: 5, marginTop: 1, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", boxSizing: "border-box", transition: "all 0.15s" }}
+      {/* Purchase With a Purpose art program - routed page at /art/, shown inside the app shell */}
+      <div onClick={() => onNav("art")} style={{ padding: isMobile ? "8px 10px" : "5px 10px", minHeight: isMobile ? 44 : undefined, borderRadius: 5, marginTop: 1, cursor: "pointer", display: "flex", alignItems: "center", gap: 8, color: "rgba(255,255,255,0.5)", fontSize: 13, textDecoration: "none", boxSizing: "border-box", transition: "all 0.15s" }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.06)"; e.currentTarget.style.color = "#fff"; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(255,255,255,0.5)"; }}>
         <div style={{ width: 18, height: 18, borderRadius: 4, background: "linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #7C3AED 100%)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700, color: "#fff", flexShrink: 0 }}>A</div>
         Purchase With a Purpose art
-      </a>
+      </div>
 
       {/* Social icons - pinned to bottom */}
       <div style={{ marginTop: "auto", paddingTop: 10, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", gap: 4, paddingBottom: 4 }}>
@@ -2247,6 +2250,23 @@ function RecruitmentView({ onNav }) {
   );
 }
 
+// ── Art view ──
+// The Purchase With a Purpose gallery is a self-contained static page
+// (public/art/gallery.html: its own fonts, vw/vh layout, html/body styles and a
+// canvas paint effect). It is framed rather than ported so its design stays
+// exactly as built; the frame scrolls internally and fills the content area.
+function ArtView() {
+  return (
+    <div style={{ flex: 1, minHeight: 0, display: "flex", overflow: "hidden", background: "#260D46" }}>
+      <iframe
+        src="/art/gallery.html"
+        title="Purchase With a Purpose"
+        style={{ flex: 1, width: "100%", height: "100%", border: 0, padding: 0, margin: 0, display: "block", background: "#260D46" }}
+      />
+    </div>
+  );
+}
+
 // Shared channel-page styles (used by ForFoundersView and RecruitmentView)
 const FF_CSS = `
         .ff-root { font-family: 'Lato', sans-serif; font-size: 15px; line-height: 1.46668; color: #1d1c1d; }
@@ -2546,6 +2566,7 @@ function MobileBottomNav({ active, onNav }) {
     { id: "analytics", label: "Analytics", Icon: IconChart,    badge: null },
     { id: "founders",  label: "Founders",  Icon: IconLock,     badge: null },
     { id: "recruitment", label: "Recruitment", Icon: IconUsers, badge: null },
+    { id: "art",       label: "Art",       Icon: IconArt,      badge: null },
   ];
 
   return (
@@ -2638,8 +2659,11 @@ function MobileBottomNav({ active, onNav }) {
 
 // ── URL routing ──
 // Pages that have their own URL. Everything else lives at "/".
-const PAGE_PATHS = { recruitment: "/recruitment" };
-const PAGE_TITLES = { recruitment: "AI Recruitment - Hire an AI Engineer | HireWilliam" };
+const PAGE_PATHS = { recruitment: "/recruitment", art: "/art" };
+const PAGE_TITLES = {
+  recruitment: "AI Recruitment - Hire an AI Engineer | HireWilliam",
+  art: "Purchase With a Purpose | Where there’s a will, there’s a way",
+};
 const DEFAULT_TITLE = typeof document !== "undefined" ? document.title : "HireWilliam";
 const trimSlash = (p) => p.replace(/\/+$/, "") || "/";
 function pageFromPath(pathname) {
@@ -2674,6 +2698,7 @@ export default function App() {
     analytics: <AnalyticsView />,
     founders: <ForFoundersView onNav={setPage} />,
     recruitment: <RecruitmentView onNav={setPage} />,
+    art: <ArtView />,
   };
 
   return (
@@ -2695,7 +2720,7 @@ export default function App() {
             <div>
               <span style={{ color: "#fff", fontSize: 15, fontWeight: 700 }}>HireWilliam</span>
               <div style={{ fontSize: 11, color: "rgba(255,255,255,0.45)", lineHeight: 1.2 }}>
-                {{ chat: "talk-to-william", pipeline: "results", meetings: "meetings", analytics: "analytics", founders: "for-founders", recruitment: "recruitment" }[page]}
+                {{ chat: "talk-to-william", pipeline: "results", meetings: "meetings", analytics: "analytics", founders: "for-founders", recruitment: "recruitment", art: "purchase-with-a-purpose" }[page]}
               </div>
             </div>
           </div>
