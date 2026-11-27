@@ -12,11 +12,23 @@ const SITE = 'https://hirewilliam.com'
 // Each copy carries the page's own <head> and a static, crawlable version of
 // the view's copy inside <div id="root">, which React replaces on mount.
 //
-//   route:   the URL path (dist/<route>/index.html)
-//   source:  file holding the page's meta description, JSON-LD and static copy
-//   title:   taken from PAGE_TITLES in src/App.jsx so the two never diverge
+//   route:    the URL path (dist/<route>/index.html)
+//   source:   file holding the page's meta description, JSON-LD and static copy
+//   copyOf:   where the real copy lives, for the drift check: 'bundle' when
+//             the view is React (text is in dist/assets/*.js), or a static
+//             HTML file whose text the static copy must match
+//   ogImage:  optional og:image / twitter:image for the page (default: homepage image)
+//   robots:   optional robots meta content (default: homepage value)
+//   title:    taken from PAGE_TITLES in src/App.jsx so the two never diverge
 const ROUTED_PAGES = [
-  { route: 'recruitment', source: 'seo/recruitment-static.html' },
+  { route: 'recruitment', source: 'seo/recruitment-static.html', copyOf: 'bundle' },
+  {
+    route: 'art',
+    source: 'seo/art-static.html',
+    copyOf: 'public/art/gallery.html',
+    ogImage: `${SITE}/art/painting-1.jpg`,
+    robots: 'index, follow, max-image-preview:large',
+  },
 ]
 
 // JSON-LD nodes that describe the site as a whole and may stay on every routed
@@ -98,21 +110,32 @@ function bundleText(dist) {
     .replace(/\\(["'])/g, '$1')
 }
 
-function checkDrift(route, body, bundle) {
-  const missing = sentencesOf(body).filter((s) => !bundle.includes(s))
+// The visible text of a static HTML file, whitespace-collapsed, so sentences
+// that span inline tags still match.
+function staticText(file) {
+  const html = readFileSync(resolve(__dirname, file), 'utf8')
+    .replace(/<!--[\s\S]*?-->/g, '')
+    .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, '')
+    .replace(/<[^>]+>/g, ' ')
+  return decodeEntities(html).replace(/\s+/g, ' ')
+}
+
+function checkDrift(route, body, corpus, corpusName) {
+  const missing = sentencesOf(body).filter((s) => !corpus.includes(s))
   if (missing.length) {
     throw new Error(
-      `routed-pages: static copy for /${route}/ has drifted from the React view. ` +
-      `These sentences are not in the built bundle:\n  - ${missing.join('\n  - ')}`,
+      `routed-pages: static copy for /${route}/ has drifted from ${corpusName}. ` +
+      `These sentences are not in it:\n  - ${missing.join('\n  - ')}`,
     )
   }
 }
 
-function buildRoutedPage(homepage, { route, source }, bundle) {
+function buildRoutedPage(homepage, { route, source, copyOf, ogImage, robots }, bundle) {
   const url = `${SITE}/${route}/`
   const title = pageTitleFromApp(route)
   const { description, jsonLd, body } = parseSource(source)
-  checkDrift(route, body, bundle)
+  if (copyOf === 'bundle') checkDrift(route, body, bundle, 'the React view (built bundle)')
+  else checkDrift(route, body, staticText(copyOf), copyOf)
 
   let html = homepage
   html = replaceOnce(html, /<title>[^<]*<\/title>/, `<title>${title}</title>`, '<title>')
@@ -123,6 +146,16 @@ function buildRoutedPage(homepage, { route, source }, bundle) {
   html = replaceOnce(html, /<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeAttr(description)}">`, 'og:description')
   html = replaceOnce(html, /<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${escapeAttr(title)}">`, 'twitter:title')
   html = replaceOnce(html, /<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeAttr(description)}">`, 'twitter:description')
+  if (ogImage) {
+    html = replaceOnce(html, /<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${ogImage}">`, 'og:image')
+    html = replaceOnce(html, /<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${ogImage}">`, 'twitter:image')
+    // The homepage image dimensions and alt text do not describe this image.
+    html = html.replace(/[ \t]*<meta (?:property="og:image:(?:width|height|alt)"|name="twitter:image:alt") content="[^"]*">\n?/g, '')
+  }
+  if (robots) {
+    html = replaceOnce(html, /<meta name="robots" content="[^"]*">/, `<meta name="robots" content="${robots}">`, 'robots meta')
+    html = html.replace(/[ \t]*<meta name="(?:googlebot|bingbot)" content="[^"]*">\n?/g, '')
+  }
 
   // Keep only site-wide structured data, then add the page's own nodes.
   let kept = 0
