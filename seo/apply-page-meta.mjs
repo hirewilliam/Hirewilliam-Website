@@ -30,9 +30,10 @@ function setMeta(html, attrName, attrValue, content, page) {
   if (!re.test(html)) {
     const re2 = new RegExp(`(<meta\\s+content=")([^"]*)("\\s+${attrName}="${attrValue}")`, 'i')
     if (!re2.test(html)) { console.warn(`  ${page}: no <meta ${attrName}="${attrValue}">, skipped`); return html }
-    return html.replace(re2, `$1${escapeAttr(content)}$3`)
+    return html.replace(re2, (m, a, old, z) => a + escapeAttr(content) + z)
   }
-  return html.replace(re, `$1${escapeAttr(content)}$3`)
+  // Function replacement: a literal "$1,500" in the content must not be read as a group reference.
+  return html.replace(re, (m, a, old, z) => a + escapeAttr(content) + z)
 }
 
 const rows = []
@@ -52,7 +53,7 @@ for (const [page, { title, description }] of Object.entries(meta)) {
   seenTitles.set(title, page); seenDescs.set(description, page)
 
   if (doTitles) {
-    html = html.replace(/<title>[^<]*<\/title>/i, `<title>${escapeText(title)}</title>`)
+    html = html.replace(/<title>[^<]*<\/title>/i, () => `<title>${escapeText(title)}</title>`)
     html = setMeta(html, 'property', 'og:title', title, page)
     html = setMeta(html, 'name', 'twitter:title', title, page)
   }
