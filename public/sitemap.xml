@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <!-- Core -->
   <url>
     <loc>https://hirewilliam.com/</loc>
-    <lastmod>2026-06-05</lastmod>
+    <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -295,6 +296,41 @@
     <lastmod>2026-11-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/painting-1.jpg</image:loc>
+      <image:title>Original I</image:title>
+      <image:caption>Original work of African art: a dancer in a feathered skirt and cuffs, painted in black on a yellow and green ground</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/painting-2.jpg</image:loc>
+      <image:title>Original II</image:title>
+      <image:caption>Original work of African art: a dancer in a blue top and feathered skirt holding a rattle, painted in black on a red, orange and green ground</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/print-1.jpg</image:loc>
+      <image:title>Threshold</image:title>
+      <image:caption>AI art print: a door standing ajar in a purple wall, gold light spilling through</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/print-2.jpg</image:loc>
+      <image:title>The Mantle</image:title>
+      <image:caption>AI art print: a woman seen from behind in a mantle of gold mosaic</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/print-3.jpg</image:loc>
+      <image:title>She Is Many</image:title>
+      <image:caption>AI art print: a woman’s face in shades of purple, made up of thousands of small portraits of other women</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/print-4.jpg</image:loc>
+      <image:title>Mended</image:title>
+      <image:caption>AI art print: a violet glazed bowl, broken and mended with seams of gold</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://hirewilliam.com/art/print-5.jpg</image:loc>
+      <image:title>Phoenix</image:title>
+      <image:caption>AI art print: a phoenix in thick gold paint strokes rising from grey ash</image:caption>
+    </image:image>
   </url>
 
 </urlset>
